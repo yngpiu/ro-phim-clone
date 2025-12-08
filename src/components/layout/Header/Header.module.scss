@@ -8,6 +8,7 @@
   z-index: 100;
   transition: background-color 0.3s ease-in-out;
   background-color: $layout-background;
+  padding: 0 0.6rem;
   height: 6rem;
   color: $layout-foreground;
 
@@ -18,5 +19,21 @@
 
   &--scrolled {
     background-color: $layout-background;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__nav-toggle {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 4rem;
+    height: 4rem;
+    font-size: 2rem;
   }
 }

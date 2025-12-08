@@ -30,18 +30,3 @@ $grid-breakpoints: (
     white-space: nowrap;
   }
 }
-
-@mixin flex-box($align-items: center, $justify-content: center, $flex-direction: row) {
-  display: flex;
-  flex-direction: $flex-direction;
-  justify-content: $justify-content;
-  align-items: $align-items;
-}
-
-@mixin flex-center {
-  @include flex-box(center, center, row);
-}
-
-@mixin flex-between {
-  @include flex-box(between, center, row);
-}
