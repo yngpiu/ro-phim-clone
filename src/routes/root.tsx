@@ -1,45 +1,45 @@
 import { createBrowserRouter } from 'react-router-dom';
 
 import RootLayout from '@/components/layout/RootLayout/RootLayout';
-import FilmDetail from '@/pages/FilmDetail/FilmDetail';
-import FilmList from '@/pages/FilmList/FilmList';
-import Home from '@/pages/Home/Home';
-import TopicList from '@/pages/TopicList/TopicList';
-import WatchFilm from '@/pages/WatchFilm/WatchFilm';
+import FilmDetailPage from '@/pages/FilmDetailPage/FilmDetailPage';
+import FilmListPage from '@/pages/FilmListPage/FilmListPage';
+import HomePage from '@/pages/HomePage/HomePage';
+import TopicListPage from '@/pages/TopicListPage/TopicListPage';
+import WatchFilmPage from '@/pages/WatchFilmPage/WatchFilmPage';
 
 const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
     children: [
-      { index: true, element: <Home /> },
+      { index: true, element: <HomePage /> },
       {
         path: 'the-loai/:slug',
-        element: <FilmList />,
+        element: <FilmListPage />,
       },
       {
         path: 'quoc-gia/:slug',
-        element: <FilmList />,
+        element: <FilmListPage />,
       },
       {
         path: 'phim-le',
-        element: <FilmList />,
+        element: <FilmListPage />,
       },
       {
         path: 'phim-bo',
-        element: <FilmList />,
+        element: <FilmListPage />,
       },
       {
         path: 'chu-de',
-        element: <TopicList />,
+        element: <TopicListPage />,
       },
       {
         path: 'chu-de/:slug',
-        element: <FilmList />,
+        element: <FilmListPage />,
       },
-      { path: 'phim/:slug', element: <FilmDetail /> },
+      { path: 'phim/:slug', element: <FilmDetailPage /> },
 
-      { path: 'xem-phim/:slug', element: <WatchFilm /> },
+      { path: 'xem-phim/:slug', element: <WatchFilmPage /> },
     ],
   },
 ]);
