@@ -1,8 +1,14 @@
-import { type ReactNode, createContext, useEffect, useRef, useState } from 'react';
+import {
+  type ReactNode,
+  createContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 
-interface ScrollContextType {
+type ScrollContextType = {
   isAtTop: boolean;
-}
+};
 
 const ScrollContext = createContext<ScrollContextType>({
   isAtTop: false,
@@ -13,10 +19,13 @@ const ScrollProvider = ({ children }: { children: ReactNode }) => {
   const sentinelRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const obs = new IntersectionObserver(([entry]) => setIsAtTop(entry.isIntersecting), {
-      threshold: 0,
-      rootMargin: '0px',
-    });
+    const obs = new IntersectionObserver(
+      ([entry]) => setIsAtTop(entry.isIntersecting),
+      {
+        threshold: 0,
+        rootMargin: '0px',
+      }
+    );
 
     if (sentinelRef.current) obs.observe(sentinelRef.current);
 

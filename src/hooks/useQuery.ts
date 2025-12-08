@@ -3,21 +3,21 @@ import { useEffect, useMemo, useState } from 'react';
 
 import axiosClient from '@/apis/config/axiosClient';
 
-interface OphimApiResponse<T> {
+type OphimApiResponse<T> = {
   status: 'success' | 'error';
   message: string;
   data: T;
-}
+};
 
-interface UseQueryState<T> {
+type UseQueryState<T> = {
   data: T | null;
   loading: boolean;
   error: Error | null;
-}
+};
 
-interface UseQueryReturn<T> extends UseQueryState<T> {
+type UseQueryReturn<T> = UseQueryState<T> & {
   refetch: () => void;
-}
+};
 
 function useQuery<T>(
   url: string,
