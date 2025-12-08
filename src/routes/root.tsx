@@ -3,7 +3,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import RootLayout from '@/components/layout/RootLayout/RootLayout';
 import FilmDetail from '@/pages/FilmDetail/FilmDetail';
 import FilmList from '@/pages/FilmList/FilmList';
-import Home from '@/pages/HomePage/Home';
+import Home from '@/pages/Home/Home';
 import TopicList from '@/pages/TopicList/TopicList';
 import WatchFilm from '@/pages/WatchFilm/WatchFilm';
 
