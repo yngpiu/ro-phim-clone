@@ -128,18 +128,22 @@ export type ResponseFilmList = {
   APP_DOMAIN_CDN_IMAGE: string;
 };
 
-export type ResponseGenre = {
-  items: {
-    _id: string;
-    name: string;
-    slug: string;
-  }[];
+export type GenreAPI = {
+  _id: string;
+  name: string;
+  slug: string;
 };
 
-export type CountryResponse = {
-  items: {
-    _id: string;
-    name: string;
-    slug: string;
-  }[];
+export type CountryAPI = {
+  _id: string;
+  name: string;
+  slug: string;
+};
+
+export type GenreAPIResponse = {
+  items: GenreAPI[];
+};
+
+export type CountryAPIResponse = {
+  items: CountryAPI[];
 };

@@ -1,0 +1,44 @@
+@use '@/assets/styles/abstracts' as *;
+
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 102;
+  border-radius: 1rem;
+  background-color: color-opacity(black, 0.85);
+  padding: 1rem;
+  width: auto;
+  max-height: 60vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  &::-webkit-scrollbar {
+    width: 0;
+    height: 0;
+  }
+  &--country {
+    right: 0;
+    left: auto;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 1.5rem;
+
+    @media (min-width: 450px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &__item {
+    a {
+      display: block;
+      padding: 1.2rem 0.5rem;
+      font-weight: 500;
+      font-size: 1.3rem;
+      text-wrap: nowrap;
+    }
+  }
+}
