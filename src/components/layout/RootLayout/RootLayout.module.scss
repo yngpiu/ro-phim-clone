@@ -1,0 +1,9 @@
+@use '@/assets/styles/abstracts' as *;
+
+.main {
+  padding-top: 6rem;
+
+  @include breakpoint('lg') {
+    padding-top: 9rem;
+  }
+}

@@ -1,0 +1,22 @@
+@use '@/assets/styles/abstracts' as *;
+
+.header {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 100;
+  transition: background-color 0.3s ease-in-out;
+  background-color: $layout-background;
+  height: 6rem;
+  color: $layout-foreground;
+
+  @include breakpoint('lg') {
+    background-color: transparent;
+    height: 9rem;
+  }
+
+  &--scrolled {
+    background-color: $layout-background;
+  }
+}

@@ -1,0 +1,47 @@
+@use 'sass:map';
+
+$grid-breakpoints: (
+  'sm': 576px,
+  'md': 768px,
+  'lg': 992px,
+  'xl': 1200px,
+  'xxl': 1400px,
+);
+
+@mixin breakpoint($key) {
+  $breakpoint: map.get($grid-breakpoints, $key);
+  @if $breakpoint {
+    @media (min-width: $breakpoint) {
+      @content;
+    }
+  } @else {
+    @error "Breakpoint #{$key} not found in $grid-breakpoints";
+  }
+}
+
+@mixin text-truncate($lines: 1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  @if ($lines > 1) {
+    display: -webkit-box;
+    -webkit-line-clamp: $lines;
+    -webkit-box-orient: vertical;
+  } @else {
+    white-space: nowrap;
+  }
+}
+
+@mixin flex-box($align-items: center, $justify-content: center, $flex-direction: row) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+}
+
+@mixin flex-center {
+  @include flex-box(center, center, row);
+}
+
+@mixin flex-between {
+  @include flex-box(between, center, row);
+}
