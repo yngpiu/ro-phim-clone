@@ -1,6 +1,7 @@
 import classNames from 'classnames/bind';
 import { useContext } from 'react';
 
+import LogoLink from '@/components/LogoLink/LogoLink';
 import NavToggle from '@/components/layout/Header/components/NavToggle/NavToggle';
 import { ScrollContext } from '@/contexts/ScrollContext';
 
@@ -14,6 +15,7 @@ const Header = () => {
     <header className={cx('header', { 'header--scrolled': !isAtTop })}>
       <div className={cx('header__container')}>
         <NavToggle />
+        <LogoLink className={cx('header__logo')} />
       </div>
     </header>
   );

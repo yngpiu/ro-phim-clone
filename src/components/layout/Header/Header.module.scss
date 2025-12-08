@@ -36,4 +36,12 @@
     height: 4rem;
     font-size: 2rem;
   }
+
+  &__logo {
+    margin-left: 2rem;
+
+    @include breakpoint('lg') {
+      margin-left: 0;
+    }
+  }
 }

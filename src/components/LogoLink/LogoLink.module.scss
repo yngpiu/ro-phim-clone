@@ -1,0 +1,12 @@
+@use '@/assets/styles/abstracts' as *;
+
+.logo {
+  & img {
+    width: auto;
+    height: 3.6rem;
+
+    @include breakpoint('lg') {
+      height: 4rem;
+    }
+  }
+}
