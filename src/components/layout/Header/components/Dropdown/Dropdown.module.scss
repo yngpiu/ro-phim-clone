@@ -20,6 +20,11 @@
   &--country {
     right: 0;
     left: auto;
+
+    @include breakpoint(sm) {
+      right: auto;
+      left: 0;
+    }
   }
 
   &__list {
@@ -30,15 +35,24 @@
     @media (min-width: 450px) {
       grid-template-columns: repeat(3, 1fr);
     }
+
+    @include breakpoint(md) {
+      grid-template-columns: repeat(4, 1fr);
+    }
   }
 
   &__item {
     a {
       display: block;
-      padding: 1.2rem 0.5rem;
+      border-radius: 0.5rem;
+      padding: 1.2rem 0.8rem;
       font-weight: 500;
       font-size: 1.3rem;
       text-wrap: nowrap;
+      &:hover {
+        background-color: color-opacity(white, 0.04);
+        color: $primary-foreground;
+      }
     }
   }
 }
