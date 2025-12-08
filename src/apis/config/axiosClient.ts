@@ -1,7 +1,7 @@
 import axios, { type AxiosError, type AxiosRequestConfig } from 'axios';
 
 const axiosInstance = axios.create({
-  baseURL: 'https://ophim1.com',
+  baseURL: 'https://ophim1.com/v1/api',
   headers: {
     'Content-Type': 'application/json',
   },

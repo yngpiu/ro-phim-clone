@@ -3,6 +3,12 @@ import { useEffect, useMemo, useState } from 'react';
 
 import axiosClient from '@/apis/config/axiosClient';
 
+interface OphimApiResponse<T> {
+  status: 'success' | 'error';
+  message: string;
+  data: T;
+}
+
 interface UseQueryState<T> {
   data: T | null;
   loading: boolean;
@@ -23,13 +29,17 @@ function useQuery<T>(
   const configKey = useMemo(() => {
     return config ? JSON.stringify(config) : '';
   }, [config]);
+
   const fetchData = async () => {
     setLoading(true);
     setError(null);
 
     try {
-      const response = await axiosClient.get<T>(url, config);
-      setData(response);
+      const rawResponse = await axiosClient.get<OphimApiResponse<T>>(
+        url,
+        config
+      );
+      setData(rawResponse.data);
     } catch (err) {
       setError(err as Error);
     } finally {
@@ -45,9 +55,12 @@ function useQuery<T>(
       setError(null);
 
       try {
-        const response = await axiosClient.get<T>(url, config);
+        const rawResponse = await axiosClient.get<OphimApiResponse<T>>(
+          url,
+          config
+        );
         if (!ignore) {
-          setData(response);
+          setData(rawResponse.data);
         }
       } catch (err) {
         if (!ignore) {
