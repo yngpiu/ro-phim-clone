@@ -42,16 +42,15 @@ const Header = () => {
           <NavToggle isOpen={isOpenNavMenu} onToggle={handleNavToggle} />
           <LogoLink className={cx('header__logo')} />
         </div>
-        {isOpenNavMenu && (
-          <Navigation
-            genres={genres?.items || []}
-            countries={countries?.items || []}
-          />
-        )}
         <SearchBar isOpen={isOpenSearchBar} />
         <SearchBarToggle
           isOpen={isOpenSearchBar}
           onToggle={handleSearchToggle}
+        />
+        <Navigation
+          genres={genres?.items || []}
+          countries={countries?.items || []}
+          isOpen={isOpenNavMenu}
         />
       </div>
     </header>

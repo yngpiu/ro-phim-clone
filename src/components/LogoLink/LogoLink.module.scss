@@ -5,7 +5,7 @@
     width: auto;
     height: 3.6rem;
 
-    @include breakpoint('lg') {
+    @include breakpoint('xl') {
       height: 4rem;
     }
   }

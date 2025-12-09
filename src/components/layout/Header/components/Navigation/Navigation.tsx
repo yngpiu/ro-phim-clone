@@ -15,9 +15,10 @@ const cx = classNames.bind(styles);
 type NavigationProps = {
   genres: GenreAPI[];
   countries: CountryAPI[];
+  isOpen: boolean;
 };
 
-const Navigation = ({ genres, countries }: NavigationProps) => {
+const Navigation = ({ genres, countries, isOpen }: NavigationProps) => {
   const [selectedCategory, setSelectedCategory] = useState<
     'genre' | 'country' | null
   >(null);
@@ -35,7 +36,7 @@ const Navigation = ({ genres, countries }: NavigationProps) => {
   };
 
   return (
-    <nav className={cx('navigation')}>
+    <nav className={cx('navigation', { 'navigation--open': isOpen })}>
       <div className={cx('navigation__user')}>
         <Link to="/login">
           <FontAwesomeIcon icon={faUser} />

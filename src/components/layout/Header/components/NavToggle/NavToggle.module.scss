@@ -10,7 +10,7 @@
   width: 4rem;
   height: 4rem;
 
-  @include breakpoint(lg) {
+  @include breakpoint(xl) {
     display: none;
   }
 
