@@ -1,19 +1,19 @@
 import classNames from 'classnames/bind';
-import { useContext } from 'react';
-
-import { NavMenuContext } from '@/contexts/NavMenuContext';
 
 import styles from './NavToggle.module.scss';
 
 const cx = classNames.bind(styles);
 
-const NavToggle = () => {
-  const { isOpenNavMenu, openNavMenu, closeNavMenu } =
-    useContext(NavMenuContext);
+interface NavToggleProps {
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+const NavToggle = ({ isOpen, onToggle }: NavToggleProps) => {
   return (
     <button
-      className={cx('nav-toggle', { 'nav-toggle--close': isOpenNavMenu })}
-      onClick={() => (isOpenNavMenu ? closeNavMenu() : openNavMenu())}
+      className={cx('nav-toggle', { 'nav-toggle--close': isOpen })}
+      onClick={onToggle}
     >
       <div className={cx('nav-toggle__line')}></div>
       <div className={cx('nav-toggle__line')}></div>
