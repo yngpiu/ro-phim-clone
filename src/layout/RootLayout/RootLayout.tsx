@@ -1,9 +1,9 @@
 import classNames from 'classnames/bind';
 import { Outlet } from 'react-router-dom';
 
-import Footer from '@/components/layout/Footer/Footer';
-import Header from '@/components/layout/Header/Header';
 import { ScrollProvider } from '@/contexts/ScrollContext';
+import Footer from '@/layout/Footer/Footer';
+import Header from '@/layout/Header/Header';
 
 import styles from './RootLayout.module.scss';
 

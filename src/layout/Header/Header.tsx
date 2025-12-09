@@ -2,12 +2,12 @@ import classNames from 'classnames/bind';
 import { useContext, useState } from 'react';
 
 import LogoLink from '@/components/LogoLink/LogoLink';
-import NavToggle from '@/components/layout/Header/components/NavToggle/NavToggle';
-import Navigation from '@/components/layout/Header/components/Navigation/Navigation';
-import SearchBar from '@/components/layout/Header/components/SearchBar/SearchBar';
-import SearchBarToggle from '@/components/layout/Header/components/SearchBarToggle/SearchBarToggle';
 import { ScrollContext } from '@/contexts/ScrollContext';
 import useQuery from '@/hooks/useQuery';
+import NavToggle from '@/layout/Header/components/NavToggle/NavToggle';
+import Navigation from '@/layout/Header/components/Navigation/Navigation';
+import SearchBar from '@/layout/Header/components/SearchBar/SearchBar';
+import SearchBarToggle from '@/layout/Header/components/SearchBarToggle/SearchBarToggle';
 import type { CountryAPIResponse, GenreAPIResponse } from '@/types/api.types';
 
 import styles from './Header.module.scss';

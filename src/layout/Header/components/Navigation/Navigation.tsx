@@ -4,8 +4,8 @@ import classNames from 'classnames/bind';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-import Dropdown from '@/components/layout/Header/components/Dropdown/Dropdown';
 import useOutsideClick from '@/hooks/useOutsideClick';
+import Dropdown from '@/layout/Header/components/Dropdown/Dropdown';
 import type { CountryAPI, GenreAPI } from '@/types/api.types';
 
 import styles from './Navigation.module.scss';
