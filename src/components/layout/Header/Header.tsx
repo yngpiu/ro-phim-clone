@@ -5,6 +5,7 @@ import LogoLink from '@/components/LogoLink/LogoLink';
 import NavToggle from '@/components/layout/Header/components/NavToggle/NavToggle';
 import Navigation from '@/components/layout/Header/components/Navigation/Navigation';
 import SearchBar from '@/components/layout/Header/components/SearchBar/SearchBar';
+import SearchBarToggle from '@/components/layout/Header/components/SearchBarToggle/SearchBarToggle';
 import { ScrollContext } from '@/contexts/ScrollContext';
 import useQuery from '@/hooks/useQuery';
 import type { CountryAPIResponse, GenreAPIResponse } from '@/types/api.types';
@@ -16,23 +17,42 @@ const cx = classNames.bind(styles);
 const Header = () => {
   const { isAtTop } = useContext(ScrollContext);
   const [isOpenNavMenu, setIsOpenNavMenu] = useState<boolean>(false);
+  const [isOpenSearchBar, setIsOpenSearchBar] = useState<boolean>(false);
+
   const { data: genres } = useQuery<GenreAPIResponse>('/the-loai');
   const { data: countries } = useQuery<CountryAPIResponse>('/quoc-gia');
+  const handleSearchToggle = () => {
+    setIsOpenSearchBar(!isOpenSearchBar);
+    setIsOpenNavMenu(false);
+  };
+
+  const handleNavToggle = () => {
+    setIsOpenNavMenu(!isOpenNavMenu);
+    setIsOpenSearchBar(false);
+  };
+
   return (
     <header className={cx('header', { 'header--scrolled': !isAtTop })}>
       <div className={cx('header__container')}>
-        <NavToggle
-          isOpen={isOpenNavMenu}
-          onToggle={() => setIsOpenNavMenu(!isOpenNavMenu)}
-        />
-        <LogoLink className={cx('header__logo')} />
+        <div
+          className={cx('header__left', {
+            'header__left--hidden': isOpenSearchBar,
+          })}
+        >
+          <NavToggle isOpen={isOpenNavMenu} onToggle={handleNavToggle} />
+          <LogoLink className={cx('header__logo')} />
+        </div>
         {isOpenNavMenu && (
           <Navigation
             genres={genres?.items || []}
             countries={countries?.items || []}
           />
         )}
-        <SearchBar />
+        <SearchBar isOpen={isOpenSearchBar} />
+        <SearchBarToggle
+          isOpen={isOpenSearchBar}
+          onToggle={handleSearchToggle}
+        />
       </div>
     </header>
   );

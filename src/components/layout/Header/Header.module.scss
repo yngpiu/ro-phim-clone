@@ -12,6 +12,20 @@
   height: 6rem;
   color: $layout-foreground;
 
+  &__left {
+    display: flex;
+    align-items: center;
+    transition:
+      opacity 0.3s ease-in-out,
+      visibility 0.3s ease-in-out;
+
+    &--hidden {
+      visibility: hidden;
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
   @include breakpoint('lg') {
     background-color: transparent;
     padding: 0 2rem;

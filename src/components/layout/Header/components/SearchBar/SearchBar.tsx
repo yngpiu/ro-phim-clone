@@ -1,26 +1,27 @@
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
-import { useState } from 'react';
 
 import styles from './SearchBar.module.scss';
 
+type SearchBarProps = {
+  isOpen: boolean;
+};
+
 const cx = classNames.bind(styles);
 
-const SearchBar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
+const SearchBar = ({ isOpen }: SearchBarProps) => {
   return (
-    <div className={cx('search-bar')}>
-      <button
-        className={cx('search-bar__toggle', {
-          'search-bar__toggle--close': isOpen,
-        })}
-        onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? 'Close search' : 'Open search'}
-      >
-        <div className={cx('search-bar__icon')} />
+    <div className={cx('search-bar', { 'search-bar--open': isOpen })}>
+      <input
+        type="text"
+        placeholder="Tìm kiếm phim..."
+        className={cx('search-bar__input')}
+      />
+      <button className={cx('search-bar__button')}>
+        <FontAwesomeIcon icon={faSearch} />
       </button>
     </div>
   );
 };
-
 export default SearchBar;

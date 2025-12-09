@@ -1,0 +1,73 @@
+@use '@/assets/styles/abstracts' as *;
+
+.search-bar {
+  &__toggle {
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    align-items: flex-start;
+    margin-left: auto;
+    padding: 1rem;
+    width: 4rem;
+    height: 4rem;
+  }
+
+  &__icon {
+    transition:
+      width 0.3s ease,
+      height 0.3s ease,
+      border-color 0.3s ease;
+    border: 0.2rem solid $layout-foreground;
+    border-radius: 50%;
+    background-color: transparent;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  &__toggle::before {
+    position: absolute;
+    right: 1rem;
+    bottom: 1.4rem;
+    transform: rotate(45deg);
+    transition:
+      width 0.3s ease,
+      bottom 0.3s ease,
+      background-color 0.3s ease;
+    background-color: $layout-foreground;
+    width: 1rem;
+    height: 0.2rem;
+    content: '';
+  }
+
+  &__toggle::after {
+    position: absolute;
+    top: 1.9rem;
+    right: 1rem;
+    transform: rotate(-45deg);
+    transition:
+      width 0.3s ease,
+      background-color 0.3s ease;
+    background-color: $danger;
+    width: 0;
+    height: 0.2rem;
+    content: '';
+  }
+
+  &__toggle--close {
+    .search-bar__icon {
+      border-color: transparent;
+      width: 0;
+      height: 0;
+    }
+
+    &::before,
+    &::after {
+      background-color: $danger;
+      width: 2rem;
+    }
+
+    &::before {
+      bottom: 1.9rem;
+    }
+  }
+}
