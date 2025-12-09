@@ -21,14 +21,9 @@ const Navigation = ({ genres, countries }: NavigationProps) => {
   const [selectedCategory, setSelectedCategory] = useState<
     'genre' | 'country' | null
   >(null);
-  const genreRef = useOutsideClick<HTMLLIElement>({
+  const dropdownRef = useOutsideClick<HTMLLIElement>({
     callback: () => setSelectedCategory(null),
-    isOpen: selectedCategory === 'genre',
-  });
-
-  const countryRef = useOutsideClick<HTMLLIElement>({
-    callback: () => setSelectedCategory(null),
-    isOpen: selectedCategory === 'country',
+    isOpen: selectedCategory !== null,
   });
 
   const handleSelectCategory = (category: 'genre' | 'country') => {
@@ -56,7 +51,7 @@ const Navigation = ({ genres, countries }: NavigationProps) => {
         </li>
         <li
           className={cx('navigation__item', 'navigation__item--dropdown')}
-          ref={genreRef}
+          ref={selectedCategory === 'genre' ? dropdownRef : undefined}
         >
           <span onClick={() => handleSelectCategory('genre')}>
             Thể loại <FontAwesomeIcon icon={faCaretDown} />
@@ -67,7 +62,7 @@ const Navigation = ({ genres, countries }: NavigationProps) => {
         </li>
         <li
           className={cx('navigation__item', 'navigation__item--dropdown')}
-          ref={countryRef}
+          ref={selectedCategory === 'country' ? dropdownRef : undefined}
         >
           <span onClick={() => handleSelectCategory('country')}>
             Quốc gia <FontAwesomeIcon icon={faCaretDown} />
