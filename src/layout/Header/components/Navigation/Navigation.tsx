@@ -51,7 +51,11 @@ const Navigation = ({ genres, countries, isOpen }: NavigationProps) => {
           <Link to="/phim-bo">Phim bộ</Link>
         </li>
         <li
-          className={cx('navigation__item', 'navigation__item--dropdown')}
+          className={cx(
+            'navigation__item',
+            'navigation__item--dropdown',
+            selectedCategory === 'genre' && 'navigation__item--selected'
+          )}
           ref={selectedCategory === 'genre' ? dropdownRef : undefined}
         >
           <span onClick={() => handleSelectCategory('genre')}>
@@ -62,7 +66,11 @@ const Navigation = ({ genres, countries, isOpen }: NavigationProps) => {
           )}
         </li>
         <li
-          className={cx('navigation__item', 'navigation__item--dropdown')}
+          className={cx(
+            'navigation__item',
+            'navigation__item--dropdown',
+            selectedCategory === 'country' && 'navigation__item--selected'
+          )}
           ref={selectedCategory === 'country' ? dropdownRef : undefined}
         >
           <span onClick={() => handleSelectCategory('country')}>

@@ -13,6 +13,7 @@
   overflow-x: hidden;
   overflow-y: auto;
   overscroll-behavior: contain;
+  color: $layout-foreground;
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
@@ -26,7 +27,10 @@
       left: 0;
     }
   }
-
+  @include breakpoint(xl) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
   &__list {
     display: grid;
     grid-template-columns: repeat(2, 1fr);

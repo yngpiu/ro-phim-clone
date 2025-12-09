@@ -96,5 +96,9 @@
       position: relative;
       user-select: none;
     }
+
+    &--selected {
+      color: $primary-foreground;
+    }
   }
 }
