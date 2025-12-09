@@ -10,6 +10,10 @@
   width: 4rem;
   height: 4rem;
 
+  @include breakpoint(lg) {
+    display: none;
+  }
+
   &__line {
     transition:
       background-color 0.3s ease-in-out,

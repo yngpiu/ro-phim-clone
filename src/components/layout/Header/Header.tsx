@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import LogoLink from '@/components/LogoLink/LogoLink';
 import NavToggle from '@/components/layout/Header/components/NavToggle/NavToggle';
 import Navigation from '@/components/layout/Header/components/Navigation/Navigation';
+import SearchBar from '@/components/layout/Header/components/SearchBar/SearchBar';
 import { NavMenuContext } from '@/contexts/NavMenuContext';
 import { ScrollContext } from '@/contexts/ScrollContext';
 import useQuery from '@/hooks/useQuery';
@@ -29,6 +30,7 @@ const Header = () => {
             countries={countries?.items || []}
           />
         )}
+        <SearchBar />
       </div>
     </header>
   );
