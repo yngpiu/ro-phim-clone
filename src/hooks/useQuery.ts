@@ -11,7 +11,7 @@ type OphimApiResponse<T> = {
 
 type UseQueryState<T> = {
   data: T | null;
-  loading: boolean;
+  isLoading: boolean;
   error: Error | null;
 };
 
@@ -24,14 +24,14 @@ function useQuery<T>(
   config?: AxiosRequestConfig
 ): UseQueryReturn<T> {
   const [data, setData] = useState<T | null>(null);
-  const [loading, setLoading] = useState<boolean>(true);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
   const configKey = useMemo(() => {
     return config ? JSON.stringify(config) : '';
   }, [config]);
 
   const fetchData = async () => {
-    setLoading(true);
+    setIsLoading(true);
     setError(null);
 
     try {
@@ -43,7 +43,7 @@ function useQuery<T>(
     } catch (err) {
       setError(err as Error);
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -51,7 +51,7 @@ function useQuery<T>(
     let ignore = false;
 
     const loadData = async () => {
-      setLoading(true);
+      setIsLoading(true);
       setError(null);
 
       try {
@@ -68,7 +68,7 @@ function useQuery<T>(
         }
       } finally {
         if (!ignore) {
-          setLoading(false);
+          setIsLoading(false);
         }
       }
     };
@@ -78,9 +78,10 @@ function useQuery<T>(
     return () => {
       ignore = true;
     };
-  }, [url, configKey, config]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [url, configKey]);
 
-  return { data, loading, error, refetch: fetchData };
+  return { data, isLoading, error, refetch: fetchData };
 }
 
 export default useQuery;
