@@ -1,4 +1,5 @@
 import type { AxiosRequestConfig } from 'axios';
+import type { CacheRequestConfig } from 'axios-cache-interceptor';
 import { useEffect, useMemo, useState } from 'react';
 
 import axiosClient from '@/apis/config/axiosClient';
@@ -35,10 +36,10 @@ function useQuery<T>(
     setError(null);
 
     try {
-      const rawResponse = await axiosClient.get<OphimApiResponse<T>>(
-        url,
-        config
-      );
+      const rawResponse = await axiosClient.get<OphimApiResponse<T>>(url, {
+        ...config,
+        cache: { override: true, ttl: 5 * 60 * 1000 },
+      } as CacheRequestConfig);
       setData(rawResponse.data);
     } catch (err) {
       setError(err as Error);
