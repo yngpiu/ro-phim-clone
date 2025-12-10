@@ -13,16 +13,11 @@ const cx = classNames.bind(styles);
 const RootLayout = () => {
   const navigation = useNavigation();
 
-  if (navigation.state === 'loading') {
-    console.log('loading');
-    return <LoadingScreen />;
-  }
-
   return (
     <ScrollProvider>
       <Header />
       <main className={cx('main')}>
-        <Outlet />
+        {navigation.state === 'loading' ? <LoadingScreen /> : <Outlet />}
       </main>
       <Footer />
     </ScrollProvider>
