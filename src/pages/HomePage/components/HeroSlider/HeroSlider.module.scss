@@ -1,0 +1,464 @@
+@use '@/assets/styles/abstracts' as *;
+
+.slider {
+  position: relative;
+
+  &__main {
+    position: relative;
+
+    & :global(.swiper-wrapper) {
+      height: 30rem;
+
+      @include breakpoint(sm) {
+        height: 35rem;
+      }
+
+      @include breakpoint(md) {
+        height: auto;
+      }
+    }
+  }
+
+  &__slide {
+    position: relative;
+    height: 100%;
+  }
+
+  &__media {
+    height: 100%;
+  }
+
+  &__img {
+    mask-image: linear-gradient(0deg, transparent 0, black 30%, black);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+
+    @include breakpoint(md) {
+      max-height: 80vh;
+    }
+  }
+
+  &__thumbs {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    z-index: 2;
+    background: linear-gradient(0deg, rgba(25, 27, 36, 1), rgba(25, 27, 36, 0));
+    padding: 2rem 0 1rem;
+
+    @include breakpoint(lg) {
+      background: transparent;
+    }
+
+    @include breakpoint(md) {
+      justify-content: flex-end;
+      padding-right: 2rem;
+    }
+
+    @include breakpoint(lg) {
+      bottom: 3rem;
+    }
+
+    @include breakpoint(xxl) {
+      bottom: 8rem;
+    }
+
+    & :global(.swiper-wrapper) {
+      gap: 1rem;
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  & :global(.swiper-slide-thumb-active) {
+    & .slider__thumb-media {
+      border-color: #fff;
+    }
+  }
+
+  &__thumb {
+    max-width: 3rem;
+
+    @include breakpoint(sm) {
+      max-width: 3.4rem;
+    }
+
+    @include breakpoint(lg) {
+      max-width: 5rem;
+    }
+
+    @include breakpoint(xl) {
+      max-width: 7rem;
+    }
+
+    @include breakpoint(xxl) {
+      max-width: 8rem;
+    }
+
+    &-media {
+      transition: border-color 0.3s ease;
+      cursor: pointer;
+      border: 2px solid #98979780;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      overflow: hidden;
+
+      &:hover {
+        border-color: #fff;
+      }
+
+      @include breakpoint(sm) {
+        width: 3.4rem;
+        height: 3.4rem;
+      }
+
+      @include breakpoint(lg) {
+        border-radius: 1rem;
+        width: 5rem;
+        height: 4rem;
+      }
+
+      @include breakpoint(xl) {
+        width: 7rem;
+        height: 4.5rem;
+      }
+
+      @include breakpoint(xxl) {
+        width: 8rem;
+        height: 5rem;
+      }
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    bottom: 6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    padding: 0 1rem;
+    width: 100%;
+
+    @include breakpoint(sm) {
+      bottom: 7rem;
+    }
+
+    @include breakpoint(md) {
+      bottom: 9rem;
+      padding: 0 2rem;
+    }
+
+    @include breakpoint(lg) {
+      bottom: 13rem;
+    }
+
+    @include breakpoint(xl) {
+      bottom: 14rem;
+    }
+
+    @include breakpoint(xxl) {
+      bottom: 20rem;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+    font-size: 2.1rem;
+    text-align: center;
+    @include text-truncate(1);
+    text-shadow: 0 2px 1px rgba(0, 0, 0, 0.4);
+
+    @include breakpoint(sm) {
+      font-size: 2.2rem;
+    }
+
+    @include breakpoint(md) {
+      font-size: 2.8rem;
+      text-align: left;
+    }
+
+    @include breakpoint(lg) {
+      font-size: 3rem;
+    }
+
+    @include breakpoint(xl) {
+      font-size: 3.2rem;
+    }
+
+    @include breakpoint(xxl) {
+      font-size: 3.6rem;
+    }
+  }
+
+  &__subtitle {
+    color: $primary-foreground;
+    font-weight: 300;
+    font-size: 1.3rem;
+    text-align: center;
+    @include text-truncate(1);
+
+    @include breakpoint(sm) {
+      font-size: 1.4rem;
+    }
+
+    @include breakpoint(md) {
+      font-size: 1.6rem;
+      text-align: left;
+    }
+
+    @include breakpoint(lg) {
+      font-size: 1.8rem;
+    }
+
+    @include breakpoint(xl) {
+      font-size: 2rem;
+    }
+
+    @include breakpoint(xxl) {
+      font-size: 2.2rem;
+    }
+  }
+  &__badges {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 1.8rem;
+
+    @include breakpoint(sm) {
+      margin-top: 2rem;
+    }
+
+    @include breakpoint(md) {
+      justify-content: flex-start;
+      gap: 0.8rem;
+      margin-top: 1.6rem;
+    }
+
+    @include breakpoint(xl) {
+      gap: 1rem;
+    }
+
+    @include breakpoint(xxl) {
+      gap: 1.2rem;
+    }
+
+    &--genres {
+      display: none;
+
+      @include breakpoint(md) {
+        display: flex;
+      }
+
+      & .slider__badge {
+        border-color: transparent;
+        background-color: color-opacity(#fff, 0.1);
+      }
+    }
+  }
+  &__badge {
+    background-color: color-opacity(#fff, 0.05);
+
+    &--imdb {
+      display: flex;
+      align-items: center;
+      gap: 0.2rem;
+      border-color: $primary-foreground;
+
+      @include breakpoint(lg) {
+        gap: 0.3rem;
+      }
+
+      & span:first-child {
+        color: $primary-foreground;
+        font-size: 0.9rem;
+        line-height: 1;
+
+        @include breakpoint(sm) {
+          font-size: 1rem;
+        }
+
+        @include breakpoint(lg) {
+          font-size: 1.1rem;
+        }
+
+        @include breakpoint(xl) {
+          font-size: 1.2rem;
+        }
+
+        @include breakpoint(xxl) {
+          font-size: 1.3rem;
+        }
+      }
+    }
+
+    &--quality {
+      background: #fff;
+      color: #000;
+    }
+  }
+
+  &__actions {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    width: fit-content;
+    @include breakpoint(md) {
+      display: flex;
+      align-items: center;
+    }
+
+    @include breakpoint(lg) {
+      bottom: 3rem;
+    }
+
+    @include breakpoint(xxl) {
+      bottom: 8rem;
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-content: center;
+
+    &:last-child {
+      transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+      margin-left: 2rem;
+      border: 2px solid #aaaaaa7b;
+      border-radius: 3rem;
+      height: fit-content;
+
+      @include breakpoint(xl) {
+        margin-left: 2.5rem;
+      }
+
+      &:hover {
+        border-color: color-opacity(#fff, 0.8);
+        background-color: color-opacity(#fff, 0.05);
+
+        & .slider__info-btn {
+          border-left-color: color-opacity(#fff, 0.8);
+        }
+      }
+    }
+  }
+
+  &__heart-btn,
+  &__info-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s ease;
+    width: 6rem;
+    height: 5rem;
+
+    @include breakpoint(xl) {
+      width: 6.5rem;
+      height: 5.5rem;
+    }
+
+    &:hover {
+      & svg {
+        color: $primary-foreground;
+      }
+    }
+
+    & svg {
+      font-size: 1.8rem;
+
+      @include breakpoint(xl) {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &__info-btn {
+    transition: border-color 0.3s ease;
+    border-left: 2px solid #aaaaaa7b;
+  }
+
+  &__play-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: $gradient-background;
+    width: 6rem;
+    height: 6rem;
+    color: $gradient-foreground;
+
+    @include breakpoint(xl) {
+      width: 7rem;
+      height: 7rem;
+    }
+
+    @include breakpoint(xxl) {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+
+    & svg {
+      font-size: 1.4em;
+
+      @include breakpoint(xl) {
+        font-size: 2.5rem;
+      }
+
+      @include breakpoint(xxl) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+// :global(.swiper-slide:not(.swiper-slide-active)) {
+//   & .slider__media,
+//   & .slider__content {
+//     visibility: hidden;
+//     opacity: 0;
+//     transition:
+//       visibility 0.3s ease,
+//       opacity 0.3s ease;
+//     pointer-events: none;
+//   }
+// }
+
+// :global(.swiper-slide-active) {
+//   & .slider__media,
+//   & .slider__content {
+//     visibility: visible;
+//     opacity: 1;
+//     pointer-events: auto;
+//   }
+// }
+
+// .slider__main {
+//   & :global(.swiper-slide-prev),
+//   & :global(.swiper-slide-next) {
+//     z-index: -1 !important;
+//     pointer-events: none !important;
+//   }
+
+//   & :global(.swiper-slide-active) {
+//     z-index: 1 !important;
+//     pointer-events: auto !important;
+//   }
+// }

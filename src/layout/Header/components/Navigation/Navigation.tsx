@@ -45,10 +45,10 @@ const Navigation = ({ genres, countries, isOpen }: NavigationProps) => {
       </div>
       <ul className={cx('navigation__list')}>
         <li className={cx('navigation__item')}>
-          <Link to="/phim-le">Phim lẻ</Link>
+          <Link to="/phim-le">Phim Lẻ</Link>
         </li>
         <li className={cx('navigation__item')}>
-          <Link to="/phim-bo">Phim bộ</Link>
+          <Link to="/phim-bo">Phim Bộ</Link>
         </li>
         <li
           className={cx(
@@ -59,7 +59,7 @@ const Navigation = ({ genres, countries, isOpen }: NavigationProps) => {
           ref={selectedCategory === 'genre' ? dropdownRef : undefined}
         >
           <span onClick={() => handleSelectCategory('genre')}>
-            Thể loại <FontAwesomeIcon icon={faCaretDown} />
+            Thể Loại <FontAwesomeIcon icon={faCaretDown} />
           </span>
           {selectedCategory === 'genre' && (
             <Dropdown data={genres} type="genre" />
@@ -74,14 +74,14 @@ const Navigation = ({ genres, countries, isOpen }: NavigationProps) => {
           ref={selectedCategory === 'country' ? dropdownRef : undefined}
         >
           <span onClick={() => handleSelectCategory('country')}>
-            Quốc gia <FontAwesomeIcon icon={faCaretDown} />
+            Quốc Gia <FontAwesomeIcon icon={faCaretDown} />
           </span>
           {selectedCategory === 'country' && (
             <Dropdown data={countries} type="country" />
           )}
         </li>
         <li className={cx('navigation__item')}>
-          <Link to="/chu-de">Chủ đề</Link>
+          <Link to="/chu-de">Chủ Đề</Link>
         </li>
       </ul>
     </nav>

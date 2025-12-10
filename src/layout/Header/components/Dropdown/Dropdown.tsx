@@ -2,6 +2,7 @@ import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 
 import type { CountryAPI, GenreAPI } from '@/types/api.types';
+import { toTitleCase } from '@/utils/format';
 
 import styles from './Dropdown.module.scss';
 
@@ -21,7 +22,7 @@ const Dropdown = ({ data, type }: DropdownProps) => {
             <Link
               to={`/${type === 'genre' ? 'the-loai' : 'quoc-gia'}/${item.slug}`}
             >
-              {item.name}
+              {toTitleCase(item.name)}
             </Link>
           </li>
         ))}

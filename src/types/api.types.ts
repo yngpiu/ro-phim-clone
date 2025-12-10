@@ -117,7 +117,7 @@ export type Film = {
   last_episode: LastEpisode[];
 };
 
-export type ResponseFilmList = {
+export type FilmListAPIResponse = {
   seoOnPage: SeoOnPage;
   breadCrumb: BreadCrumb[];
   titlePage: string;
