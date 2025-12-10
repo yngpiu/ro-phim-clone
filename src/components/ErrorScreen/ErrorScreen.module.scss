@@ -1,0 +1,80 @@
+@use '@/assets/styles/abstracts' as *;
+
+.error-screen {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__logo {
+    width: 70%;
+    max-width: 40rem;
+    height: auto;
+  }
+
+  &__title {
+    margin-bottom: 0rem;
+    width: 90%;
+    max-width: 60rem;
+    color: #d65a5a;
+    font-weight: 600;
+    font-size: 1.8rem;
+    text-align: center;
+
+    @include breakpoint(sm) {
+      font-size: 2.2rem;
+    }
+    @include breakpoint(md) {
+      font-size: 2.5rem;
+    }
+    @include breakpoint(lg) {
+      font-size: 2.8rem;
+    }
+    @include breakpoint(xl) {
+      font-size: 3.2rem;
+    }
+    @include breakpoint(xxl) {
+      font-size: 3.5rem;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__description {
+    margin-bottom: 0rem;
+    width: 90%;
+    max-width: 60rem;
+    color: #666;
+    font-size: 1.4rem;
+    text-align: center;
+
+    @include breakpoint(sm) {
+      font-size: 1.6rem;
+    }
+    @include breakpoint(md) {
+      font-size: 1.8rem;
+    }
+    @include breakpoint(lg) {
+      font-size: 2rem;
+    }
+    @include breakpoint(xl) {
+      font-size: 2.2rem;
+    }
+    @include breakpoint(xxl) {
+      font-size: 2.4rem;
+    }
+  }
+}
