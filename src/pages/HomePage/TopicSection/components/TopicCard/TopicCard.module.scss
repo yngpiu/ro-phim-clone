@@ -24,6 +24,9 @@
   }
 
   &--more {
+    & .topic-card__content {
+      align-items: center;
+    }
     @include breakpoint(xl) {
       min-height: 8rem;
     }
