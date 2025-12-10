@@ -17,18 +17,18 @@
   }
 
   @include breakpoint(md) {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
   }
 
   @include breakpoint(lg) {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
   }
 
   @include breakpoint(xl) {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   @include breakpoint(xxl) {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 }
