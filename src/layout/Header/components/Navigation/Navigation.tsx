@@ -37,6 +37,11 @@ const Navigation = memo(
       }
     };
 
+    const handleCloseNavMenu = () => {
+      setSelectedCategory(null);
+      setIsOpen(false);
+    };
+
     return (
       <nav className={cx('navigation', { 'navigation--open': isOpen })}>
         <div className={cx('navigation__user')}>
@@ -68,7 +73,11 @@ const Navigation = memo(
               Thể Loại <FontAwesomeIcon icon={faCaretDown} />
             </span>
             {selectedCategory === 'genre' && (
-              <Dropdown data={genres} type="genre" setIsOpen={setIsOpen} />
+              <Dropdown
+                data={genres}
+                type="genre"
+                setIsOpen={handleCloseNavMenu}
+              />
             )}
           </li>
           <li
@@ -83,7 +92,11 @@ const Navigation = memo(
               Quốc Gia <FontAwesomeIcon icon={faCaretDown} />
             </span>
             {selectedCategory === 'country' && (
-              <Dropdown data={countries} type="country" setIsOpen={setIsOpen} />
+              <Dropdown
+                data={countries}
+                type="country"
+                setIsOpen={handleCloseNavMenu}
+              />
             )}
           </li>
           <li className={cx('navigation__item')}>
