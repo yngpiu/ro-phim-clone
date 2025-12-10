@@ -1,0 +1,107 @@
+@use '@/assets/styles/abstracts' as *;
+
+.slider {
+  &__thumbs {
+    display: flex;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    justify-content: center;
+    z-index: 2;
+    background: linear-gradient(0deg, rgba(25, 27, 36, 1), rgba(25, 27, 36, 0));
+    padding: 2rem 0 1rem;
+
+    @include breakpoint(lg) {
+      background: transparent;
+    }
+
+    @include breakpoint(md) {
+      justify-content: flex-end;
+      padding-right: 2rem;
+    }
+
+    @include breakpoint(lg) {
+      bottom: 3rem;
+    }
+
+    @include breakpoint(xxl) {
+      bottom: 8rem;
+    }
+
+    & :global(.swiper-wrapper) {
+      gap: 1rem;
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  &__thumb {
+    max-width: 3rem;
+
+    @include breakpoint(sm) {
+      max-width: 3.4rem;
+    }
+
+    @include breakpoint(lg) {
+      max-width: 5rem;
+    }
+
+    @include breakpoint(xl) {
+      max-width: 7rem;
+    }
+
+    @include breakpoint(xxl) {
+      max-width: 8rem;
+    }
+
+    &-media {
+      transition: border-color 0.3s ease;
+      cursor: pointer;
+      border: 2px solid #98979780;
+      border-radius: 50%;
+      width: 3rem;
+      height: 3rem;
+      overflow: hidden;
+
+      &:hover {
+        border-color: #fff;
+      }
+
+      @include breakpoint(sm) {
+        width: 3.4rem;
+        height: 3.4rem;
+      }
+
+      @include breakpoint(lg) {
+        border-radius: 1rem;
+        width: 5rem;
+        height: 4rem;
+      }
+
+      @include breakpoint(xl) {
+        width: 7rem;
+        height: 4.5rem;
+      }
+
+      @include breakpoint(xxl) {
+        width: 8rem;
+        height: 5rem;
+      }
+    }
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+  }
+}
+
+// Global style cho swiper thumb active
+:global(.swiper-slide-thumb-active) {
+  .slider__thumb-media {
+    border-color: #fff;
+  }
+}

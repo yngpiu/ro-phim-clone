@@ -1,0 +1,121 @@
+@use '@/assets/styles/abstracts' as *;
+
+.slider {
+  &__actions {
+    display: none;
+    position: absolute;
+    bottom: 0;
+    z-index: 3;
+    padding-bottom: 1rem;
+    padding-left: 2rem;
+    width: fit-content;
+    @include breakpoint(md) {
+      display: flex;
+      align-items: center;
+    }
+
+    @include breakpoint(lg) {
+      bottom: 3rem;
+    }
+
+    @include breakpoint(xxl) {
+      bottom: 8rem;
+    }
+  }
+
+  &__action {
+    display: flex;
+    align-content: center;
+
+    &:last-child {
+      transition:
+        border-color 0.3s ease,
+        background-color 0.3s ease;
+      margin-left: 2rem;
+      border: 2px solid #aaaaaa7b;
+      border-radius: 3rem;
+      height: fit-content;
+
+      @include breakpoint(xl) {
+        margin-left: 2.5rem;
+      }
+
+      &:hover {
+        border-color: color-opacity(#fff, 0.8);
+        background-color: color-opacity(#fff, 0.05);
+
+        & .slider__info-btn {
+          border-left-color: color-opacity(#fff, 0.8);
+        }
+      }
+    }
+  }
+
+  &__heart-btn,
+  &__info-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: color 0.3s ease;
+    width: 6rem;
+    height: 5rem;
+
+    @include breakpoint(xl) {
+      width: 6.5rem;
+      height: 5.5rem;
+    }
+
+    &:hover {
+      & svg {
+        color: $primary-foreground;
+      }
+    }
+
+    & svg {
+      font-size: 1.8rem;
+
+      @include breakpoint(xl) {
+        font-size: 2rem;
+      }
+    }
+  }
+
+  &__info-btn {
+    transition: border-color 0.3s ease;
+    border-left: 2px solid #aaaaaa7b;
+  }
+
+  &__play-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background: $gradient-background;
+    width: 6rem;
+    height: 6rem;
+    color: $gradient-foreground;
+
+    @include breakpoint(xl) {
+      width: 7rem;
+      height: 7rem;
+    }
+
+    @include breakpoint(xxl) {
+      width: 7.5rem;
+      height: 7.5rem;
+    }
+
+    & svg {
+      font-size: 1.4em;
+
+      @include breakpoint(xl) {
+        font-size: 2.5rem;
+      }
+
+      @include breakpoint(xxl) {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+

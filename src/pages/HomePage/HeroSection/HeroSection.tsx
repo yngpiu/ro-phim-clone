@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
 import useQuery from '@/hooks/useQuery';
-import HeroSlider from '@/pages/HomePage/components/HeroSlider/HeroSlider';
+import HeroSlider from '@/pages/HomePage/HeroSection/components/HeroSlider/HeroSlider';
 import type { FilmListAPIResponse } from '@/types/api.types';
 
 import styles from './HeroSection.module.scss';

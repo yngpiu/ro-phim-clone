@@ -1,0 +1,64 @@
+@use '@/assets/styles/abstracts' as *;
+
+.slider {
+  position: relative;
+
+  &__main {
+    position: relative;
+
+    & :global(.swiper-wrapper) {
+      height: 30rem;
+
+      @include breakpoint(sm) {
+        height: 35rem;
+      }
+
+      @include breakpoint(md) {
+        height: auto;
+      }
+    }
+
+    & :global(.swiper-slide-active) {
+      transition: opacity 0.8s ease !important;
+    }
+
+    & :global(:not(.swiper-slide-active)) {
+      transition: opacity 0.8s ease !important;
+    }
+  }
+
+  &__slide {
+    position: relative;
+    height: 100%;
+  }
+
+  &__media {
+    position: relative;
+    height: 100%;
+
+    &::after {
+      // nếu chỉ muốn từ md trở lên thì bọc bằng breakpoint
+      @include breakpoint(md) {
+        position: absolute;
+        opacity: 0.25; // chỉnh độ đậm nhạt
+        inset: 0;
+        background-image: url('/images/dot.png');
+        background-repeat: repeat;
+        pointer-events: none; // không chặn click
+        content: '';
+      }
+    }
+  }
+
+  &__img {
+    mask-image: linear-gradient(0deg, transparent 0, black 30%, black);
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+
+    @include breakpoint(md) {
+      max-height: 80vh;
+    }
+  }
+}
