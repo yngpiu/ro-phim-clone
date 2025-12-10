@@ -3,7 +3,7 @@ import { useEffect, useMemo, useState } from 'react';
 
 import axiosClient from '@/apis/config/axiosClient';
 
-type OphimApiResponse<T> = {
+export type OphimApiResponse<T> = {
   status: 'success' | 'error';
   message: string;
   data: T;
