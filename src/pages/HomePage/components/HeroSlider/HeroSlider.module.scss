@@ -25,7 +25,21 @@
   }
 
   &__media {
+    position: relative;
     height: 100%;
+
+    &::after {
+      // nếu chỉ muốn từ md trở lên thì bọc bằng breakpoint
+      @include breakpoint(md) {
+        position: absolute;
+        opacity: 0.25; // chỉnh độ đậm nhạt
+        inset: 0;
+        background-image: url('/images/dot.png');
+        background-repeat: repeat;
+        pointer-events: none; // không chặn click
+        content: '';
+      }
+    }
   }
 
   &__img {
