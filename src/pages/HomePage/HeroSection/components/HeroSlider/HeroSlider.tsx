@@ -8,10 +8,10 @@ import 'swiper/swiper.css';
 import { BASE_IMAGE_URL } from '@/apis/config/image';
 import type { Film } from '@/types/api.types';
 
+import styles from './HeroSlider.module.scss';
 import SliderActions from './components/SliderActions/SliderActions';
 import SliderContent from './components/SliderContent/SliderContent';
 import SliderThumb from './components/SliderThumb/SliderThumb';
-import styles from './HeroSlider.module.scss';
 
 const cx = classNames.bind(styles);
 

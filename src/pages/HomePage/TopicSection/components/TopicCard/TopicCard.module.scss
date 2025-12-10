@@ -1,0 +1,104 @@
+@use '@/assets/styles/abstracts' as *;
+.topic-card {
+  position: relative;
+  flex-shrink: 0;
+  border-radius: 0.8rem;
+  padding: 1rem 1.6rem;
+  width: 12rem;
+  height: 100%;
+  min-height: 7rem;
+  overflow: hidden;
+
+  @include breakpoint(sm) {
+    width: auto;
+    min-height: 9rem;
+  }
+
+  @include breakpoint(md) {
+    padding: 1.8rem 1.6rem;
+    min-height: 10rem;
+  }
+
+  @include breakpoint(xl) {
+    min-height: 12rem;
+  }
+
+  &--more {
+    @include breakpoint(xl) {
+      min-height: 8rem;
+    }
+
+    & .topic-card__content {
+      justify-content: center;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+
+    @include breakpoint(md) {
+      justify-content: space-between;
+    }
+  }
+
+  &::before {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: #ffffff;
+    background: linear-gradient(
+      -40deg,
+      rgba(255, 255, 255, 0.2),
+      rgba(255, 255, 255, 0) 430%,
+      rgba(255, 255, 255, 0) 0,
+      rgba(255, 255, 255, 0.2)
+    );
+    content: '';
+  }
+
+  &::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    opacity: 0.3;
+    -webkit-mask-image: linear-gradient(-45deg, black, transparent 40%);
+    mask-image: linear-gradient(-45deg, black, transparent 40%);
+    background-image: url(/images/wave.png);
+    background-position: 100% 100%;
+    background-size: 200px 140px;
+    background-repeat: no-repeat;
+    content: '';
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 1.4rem;
+
+    @include breakpoint(sm) {
+      font-size: 1.7rem;
+    }
+
+    @include breakpoint(xl) {
+      font-size: 2rem;
+    }
+  }
+
+  &__view-more {
+    display: none;
+
+    @include breakpoint(md) {
+      display: block;
+      margin-top: 1.6rem;
+      font-weight: 500;
+      font-size: 1.4rem;
+    }
+  }
+}
