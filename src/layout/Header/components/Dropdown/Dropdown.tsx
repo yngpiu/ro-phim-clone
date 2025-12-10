@@ -11,9 +11,10 @@ const cx = classNames.bind(styles);
 type DropdownProps = {
   data: GenreAPI[] | CountryAPI[];
   type: 'genre' | 'country';
+  setIsOpen: (isOpen: boolean) => void;
 };
 
-const Dropdown = ({ data, type }: DropdownProps) => {
+const Dropdown = ({ data, type, setIsOpen }: DropdownProps) => {
   return (
     <div className={cx('dropdown', `dropdown--${type}`)}>
       <ul className={cx('dropdown__list')}>
@@ -21,6 +22,7 @@ const Dropdown = ({ data, type }: DropdownProps) => {
           <li className={cx('dropdown__item')} key={item._id}>
             <Link
               to={`/${type === 'genre' ? 'the-loai' : 'quoc-gia'}/${item.slug}`}
+              onClick={() => setIsOpen(false)}
             >
               {toTitleCase(item.name)}
             </Link>

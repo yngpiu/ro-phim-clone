@@ -51,6 +51,7 @@ const Header = () => {
           genres={genres?.items || []}
           countries={countries?.items || []}
           isOpen={isOpenNavMenu}
+          setIsOpen={setIsOpenNavMenu}
         />
       </div>
     </header>
