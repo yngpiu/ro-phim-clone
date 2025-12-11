@@ -35,6 +35,11 @@ const Header = () => {
     setIsOpenSearchBar(false);
   };
 
+  const handleCloseNavMenu = () => {
+    setIsOpenNavMenu(false);
+    setIsOpenSearchBar(false);
+  };
+
   return (
     <header className={cx('header', { 'header--scrolled': !isAtTop })}>
       <div className={cx('header__container')}>
@@ -44,7 +49,10 @@ const Header = () => {
           })}
         >
           <NavToggle isOpen={isOpenNavMenu} onToggle={handleNavToggle} />
-          <LogoLink className={cx('header__logo')} />
+          <LogoLink
+            className={cx('header__logo')}
+            onCloseNavMenu={handleCloseNavMenu}
+          />
         </div>
         <SearchBar isOpen={isOpenSearchBar} />
         <SearchBarToggle

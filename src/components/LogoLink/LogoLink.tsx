@@ -7,11 +7,12 @@ const cx = classNames.bind(styles);
 
 type LogoLinkProps = {
   className?: string;
+  onCloseNavMenu?: () => void;
 };
 
-const LogoLink = ({ className }: LogoLinkProps) => {
+const LogoLink = ({ className, onCloseNavMenu }: LogoLinkProps) => {
   return (
-    <Link to="/" className={cx('logo', className)}>
+    <Link to="/" className={cx('logo', className)} onClick={onCloseNavMenu}>
       <img src="/images/logo.svg" alt="Logo" />
     </Link>
   );
