@@ -1,7 +1,9 @@
+import type { CacheRequestConfig } from 'axios-cache-interceptor';
 import { createBrowserRouter } from 'react-router-dom';
 
 import axiosClient from '@/apis/config/axiosClient';
 import ErrorScreen from '@/components/ErrorScreen/ErrorScreen';
+import LoadingScreen from '@/components/LoadingScreen/LoadingScreen';
 import NotFoundScreen from '@/components/NotFoundScreen/NotFoundScreen';
 import type { OphimApiResponse } from '@/hooks/useQuery';
 import RootLayout from '@/layout/RootLayout/RootLayout';
@@ -17,7 +19,7 @@ const router = createBrowserRouter([
     path: '/',
     element: <RootLayout />,
     errorElement: <NotFoundScreen />,
-    hydrateFallbackElement: <></>,
+    hydrateFallbackElement: <LoadingScreen />,
     children: [
       {
         index: true,
@@ -30,7 +32,8 @@ const router = createBrowserRouter([
               page: 1,
               limit: 5,
             },
-          });
+            cache: { ttl: 5 * 60 * 1000 }, // Enable cache 5 phút
+          } as CacheRequestConfig);
           return response.data;
         },
         errorElement: <ErrorScreen />,

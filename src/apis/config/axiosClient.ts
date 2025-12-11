@@ -8,8 +8,9 @@ const axiosInstance = axios.create({
   },
 });
 
+// Setup cache interceptor (opt-in: mặc định KHÔNG cache)
 const cachedAxios = setupCache(axiosInstance, {
-  ttl: 5 * 60 * 1000,
+  ttl: 0, // Mặc định không cache (per-request cache sẽ override)
   interpretHeader: false,
   methods: ['get'],
   cachePredicate: {
@@ -17,8 +18,17 @@ const cachedAxios = setupCache(axiosInstance, {
   },
 });
 
+// Response interceptor
 cachedAxios.interceptors.response.use(
   response => {
+    // Log cache status nếu request có cache
+    if (response.cached !== undefined) {
+      if (response.cached) {
+        console.log('📦 Cached:', response.config.url);
+      } else {
+        console.log('🌐 Fresh:', response.config.url);
+      }
+    }
     return { ...response, data: response.data };
   },
   (error: AxiosError) => {

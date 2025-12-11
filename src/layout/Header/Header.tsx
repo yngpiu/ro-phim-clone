@@ -19,8 +19,12 @@ const Header = () => {
   const [isOpenNavMenu, setIsOpenNavMenu] = useState<boolean>(false);
   const [isOpenSearchBar, setIsOpenSearchBar] = useState<boolean>(false);
 
-  const { data: genres } = useQuery<GenreAPIResponse>('/the-loai');
-  const { data: countries } = useQuery<CountryAPIResponse>('/quoc-gia');
+  const { data: genres } = useQuery<GenreAPIResponse>('/the-loai', {
+    cache: true, // Cache 5 phút
+  });
+  const { data: countries } = useQuery<CountryAPIResponse>('/quoc-gia', {
+    cache: true, // Cache 5 phút
+  });
   const handleSearchToggle = () => {
     setIsOpenSearchBar(!isOpenSearchBar);
     setIsOpenNavMenu(false);
