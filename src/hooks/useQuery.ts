@@ -22,7 +22,7 @@ type UseQueryReturn<T> = UseQueryState<T> & {
 
 type UseQueryOptions = {
   config?: AxiosRequestConfig;
-  cache?: boolean | number; // true = 5 phút, false = không cache, number = custom TTL (ms)
+  cache?: { ttl: number };
 };
 
 function useQuery<T>(
@@ -33,28 +33,20 @@ function useQuery<T>(
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const { config, cache = false } = options || {};
+  const { config, cache } = options || {};
 
   const configKey = useMemo(() => {
     return config ? JSON.stringify(config) : '';
   }, [config]);
-
-  // Tính toán cache TTL
-  const cacheTTL = useMemo(() => {
-    if (cache === false) return undefined;
-    if (cache === true) return 5 * 60 * 1000; // 5 phút
-    return cache; // custom TTL
-  }, [cache]);
 
   const fetchData = async () => {
     setIsLoading(true);
     setError(null);
 
     try {
-      // refetch luôn bỏ qua cache
       const rawResponse = await axiosClient.get<OphimApiResponse<T>>(url, {
         ...config,
-        cache: cacheTTL ? { override: true, ttl: cacheTTL } : undefined,
+        cache: cache ? { ...cache, override: true } : undefined,
       } as CacheRequestConfig);
       setData(rawResponse.data);
     } catch (err) {
@@ -72,10 +64,9 @@ function useQuery<T>(
       setError(null);
 
       try {
-        // Cache theo option
         const rawResponse = await axiosClient.get<OphimApiResponse<T>>(url, {
           ...config,
-          cache: cacheTTL ? { ttl: cacheTTL } : undefined,
+          cache,
         } as CacheRequestConfig);
         if (!ignore) {
           setData(rawResponse.data);

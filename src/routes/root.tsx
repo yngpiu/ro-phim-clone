@@ -32,7 +32,7 @@ const router = createBrowserRouter([
               page: 1,
               limit: 5,
             },
-            cache: { ttl: 5 * 60 * 1000 }, // Enable cache 5 phút
+            cache: { ttl: 5 * 60 * 1000 },
           } as CacheRequestConfig);
           return response.data;
         },

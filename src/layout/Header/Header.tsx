@@ -20,10 +20,10 @@ const Header = () => {
   const [isOpenSearchBar, setIsOpenSearchBar] = useState<boolean>(false);
 
   const { data: genres } = useQuery<GenreAPIResponse>('/the-loai', {
-    cache: true, // Cache 5 phút
+    cache: { ttl: 5 * 60 * 1000 }, // Cache 5 phút
   });
   const { data: countries } = useQuery<CountryAPIResponse>('/quoc-gia', {
-    cache: true, // Cache 5 phút
+    cache: { ttl: 5 * 60 * 1000 }, // Cache 5 phút
   });
   const handleSearchToggle = () => {
     setIsOpenSearchBar(!isOpenSearchBar);
