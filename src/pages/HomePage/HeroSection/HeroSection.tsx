@@ -9,9 +9,9 @@ const cx = classNames.bind(styles);
 
 const HeroSection = ({ data }: { data: FilmListAPIResponse }) => {
   return (
-    <div className={cx('hero-section')}>
+    <section className={cx('hero-section')}>
       <HeroSlider films={data?.items || []} />
-    </div>
+    </section>
   );
 };
 export default HeroSection;
