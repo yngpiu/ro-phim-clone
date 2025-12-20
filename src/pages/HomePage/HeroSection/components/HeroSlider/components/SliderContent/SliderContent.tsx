@@ -33,9 +33,11 @@ const SliderContent = ({ film }: SliderContentProps) => {
         <Badge className={cx('slider__badge')}>
           <span>{film.year}</span>
         </Badge>
-        <Badge className={cx('slider__badge')}>
-          <span>{film.time.toLocaleLowerCase()}</span>
-        </Badge>
+        {!film.time.startsWith('?') && (
+          <Badge className={cx('slider__badge')}>
+            <span>{film.time.toLocaleLowerCase()}</span>
+          </Badge>
+        )}
       </div>
       <div className={cx('slider__badges', 'slider__badges--genres')}>
         {film.category.map(genre => (
