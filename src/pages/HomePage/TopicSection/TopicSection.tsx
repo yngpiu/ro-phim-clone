@@ -9,8 +9,10 @@ const cx = classNames.bind(styles);
 
 const TopicSection = () => {
   return (
-    <div className={cx('topic-section')}>
-      <h2 className={cx('topic-section__title')}>Bạn đang quan tâm gì?</h2>
+    <section className={cx('topic-section')}>
+      <h2 className={cx('section-title', 'topic-section__title')}>
+        Bạn đang quan tâm gì?
+      </h2>
       <div className={cx('topic-section__list')}>
         {filmTopics.slice(0, 6).map(topic => (
           <TopicCard
@@ -26,7 +28,7 @@ const TopicSection = () => {
           slug="/chu-de"
         />
       </div>
-    </div>
+    </section>
   );
 };
 export default TopicSection;
