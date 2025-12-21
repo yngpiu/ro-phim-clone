@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import classNames from 'classnames/bind';
 import { Link } from 'react-router-dom';
 
+import Loader from '@/components/Loader/Loader';
 import useQuery from '@/hooks/useQuery';
 import NewFilmsCarousel from '@/pages/HomePage/NewFilmsSection/NewFilmsCarousel/NewFilmsCarousel';
 import type { FilmListAPIResponse } from '@/types/api.types';
@@ -12,9 +13,8 @@ import styles from './NewFilmsSection.module.scss';
 const cx = classNames.bind(styles);
 
 const NewFilmsSection = () => {
-  const { data: newFilms } = useQuery<FilmListAPIResponse>(
-    'danh-sach/phim-moi',
-    {
+  const { data: newFilms, isLoading: isLoadingNewFilms } =
+    useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
       config: {
         params: {
           page: 1,
@@ -22,8 +22,11 @@ const NewFilmsSection = () => {
         },
       },
       cache: { ttl: 5 * 60 * 1000 },
-    }
-  );
+    });
+
+  if (isLoadingNewFilms) {
+    return <Loader />;
+  }
   return (
     <section className={cx('nfs')}>
       <div className={cx('nfs__header')}>

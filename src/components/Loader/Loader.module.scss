@@ -1,3 +1,10 @@
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem 0;
+}
+
 .loader__spinner {
   aspect-ratio: 1;
   width: 45px;

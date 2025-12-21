@@ -1,5 +1,6 @@
 import classNames from 'classnames/bind';
 
+import Loader from '@/components/Loader/Loader';
 import useQuery from '@/hooks/useQuery';
 import NewReleasesList from '@/pages/HomePage/NewReleasesSection/components/NewReleasesList/NewReleasesList';
 import { type FilmListAPIResponse } from '@/types/api.types';
@@ -9,9 +10,8 @@ import styles from './NewReleasesSection.module.scss';
 const cx = classNames.bind(styles);
 
 const NewReleasesSection = () => {
-  const { data: newReleasesKoreanData } = useQuery<FilmListAPIResponse>(
-    'danh-sach/phim-moi',
-    {
+  const { data: newReleasesKoreanData, isLoading: isLoadingNewReleasesKorean } =
+    useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
       config: {
         params: {
           page: 1,
@@ -22,11 +22,9 @@ const NewReleasesSection = () => {
         },
       },
       cache: { ttl: 5 * 60 * 1000 },
-    }
-  );
-  const { data: newReleasesChinaData } = useQuery<FilmListAPIResponse>(
-    'danh-sach/phim-moi',
-    {
+    });
+  const { data: newReleasesChinaData, isLoading: isLoadingNewReleasesChina } =
+    useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
       config: {
         params: {
           page: 1,
@@ -37,23 +35,30 @@ const NewReleasesSection = () => {
         },
       },
       cache: { ttl: 5 * 60 * 1000 },
-    }
-  );
-  const { data: newReleasesVietnamData } = useQuery<FilmListAPIResponse>(
-    'danh-sach/phim-moi',
-    {
-      config: {
-        params: {
-          page: 1,
-          limit: 20,
-          country: 'viet-nam',
-          sort_field: 'modified.time',
-          sort_type: 'desc',
-        },
+    });
+  const {
+    data: newReleasesVietnamData,
+    isLoading: isLoadingNewReleasesVietnam,
+  } = useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
+    config: {
+      params: {
+        page: 1,
+        limit: 20,
+        country: 'viet-nam',
+        sort_field: 'modified.time',
+        sort_type: 'desc',
       },
-      cache: { ttl: 5 * 60 * 1000 },
-    }
-  );
+    },
+    cache: { ttl: 5 * 60 * 1000 },
+  });
+
+  if (
+    isLoadingNewReleasesKorean ||
+    isLoadingNewReleasesChina ||
+    isLoadingNewReleasesVietnam
+  ) {
+    return <Loader />;
+  }
   return (
     <section className={cx('new-releases-section')}>
       <div className={cx('nrs__container')}>
