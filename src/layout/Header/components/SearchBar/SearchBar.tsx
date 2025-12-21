@@ -12,16 +12,26 @@ const cx = classNames.bind(styles);
 
 const SearchBar = ({ isOpen }: SearchBarProps) => {
   return (
-    <div className={cx('search-bar', { 'search-bar--open': isOpen })}>
+    <div
+      className={cx('search-panel', {
+        'search-panel--active': isOpen,
+      })}
+    >
       <input
         type="text"
         placeholder="Tìm kiếm phim..."
-        className={cx('search-bar__input')}
+        className={cx('search-panel__field')}
       />
-      <button className={cx('search-bar__button')}>
-        <FontAwesomeIcon icon={faSearch} />
+
+      <button
+        type="button"
+        className={cx('search-panel__submit')}
+        aria-label="Search"
+      >
+        <FontAwesomeIcon icon={faSearch} className={cx('search-panel__icon')} />
       </button>
     </div>
   );
 };
+
 export default SearchBar;

@@ -1,6 +1,6 @@
 @use '@/assets/styles/abstracts' as *;
 
-.nav-toggle {
+.menu-toggle {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -14,7 +14,7 @@
     display: none;
   }
 
-  &__line {
+  &__bar {
     transition:
       background-color 0.3s ease-in-out,
       transform 0.3s ease-in-out,
@@ -28,16 +28,18 @@
     }
   }
 
-  &--close {
-    .nav-toggle__line {
+  &--active {
+    .menu-toggle__bar {
       background-color: $danger;
 
       &:nth-child(1) {
         transform: rotate(45deg) translate(0.4rem, 0.45rem);
       }
+
       &:nth-child(2) {
         opacity: 0;
       }
+
       &:nth-child(3) {
         transform: rotate(-45deg) translate(0.4rem, -0.45rem);
       }

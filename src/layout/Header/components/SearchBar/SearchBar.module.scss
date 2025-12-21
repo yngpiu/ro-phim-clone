@@ -1,6 +1,6 @@
 @use '@/assets/styles/abstracts' as *;
 
-.search-bar {
+.search-panel {
   position: absolute;
   top: 50%;
   left: 1rem;
@@ -14,7 +14,13 @@
   height: 4rem;
   pointer-events: none;
 
-  @include breakpoint('xl') {
+  &--active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  @include breakpoint(xl) {
     position: relative;
     top: auto;
     left: auto;
@@ -32,13 +38,7 @@
     }
   }
 
-  &--open {
-    visibility: visible;
-    opacity: 1;
-    pointer-events: auto;
-  }
-
-  &__input {
+  &__field {
     border: none;
     border-radius: 0.6rem;
     background: color-opacity(white, 0.1);
@@ -62,15 +62,19 @@
     }
   }
 
-  &__button {
+  &__submit {
     position: absolute;
     top: 50%;
     left: 1rem;
     transform: translateY(-50%);
+    cursor: pointer;
+    border: none;
+    background: none;
+    padding: 0;
+  }
 
-    & svg {
-      font-weight: 500;
-      font-size: 1.6rem;
-    }
+  &__icon {
+    font-weight: 500;
+    font-size: 1.6rem;
   }
 }

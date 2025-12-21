@@ -12,13 +12,18 @@ interface NavToggleProps {
 const NavToggle = ({ isOpen, onToggle }: NavToggleProps) => {
   return (
     <button
-      className={cx('nav-toggle', { 'nav-toggle--close': isOpen })}
+      type="button"
+      className={cx('menu-toggle', {
+        'menu-toggle--active': isOpen,
+      })}
       onClick={onToggle}
+      aria-label="Toggle navigation"
     >
-      <div className={cx('nav-toggle__line')}></div>
-      <div className={cx('nav-toggle__line')}></div>
-      <div className={cx('nav-toggle__line')}></div>
+      <span className={cx('menu-toggle__bar')} />
+      <span className={cx('menu-toggle__bar')} />
+      <span className={cx('menu-toggle__bar')} />
     </button>
   );
 };
+
 export default NavToggle;

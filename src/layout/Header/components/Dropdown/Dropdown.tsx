@@ -16,12 +16,13 @@ type DropdownProps = {
 
 const Dropdown = ({ data, type, setIsOpen }: DropdownProps) => {
   return (
-    <div className={cx('dropdown', `dropdown--${type}`)}>
-      <ul className={cx('dropdown__list')}>
+    <div className={cx('nav-dropdown', `nav-dropdown--${type}`)}>
+      <ul className={cx('nav-dropdown__menu')}>
         {data.map(item => (
-          <li className={cx('dropdown__item')} key={item._id}>
+          <li className={cx('nav-dropdown__item')} key={item._id}>
             <Link
               to={`/${type === 'genre' ? 'the-loai' : 'quoc-gia'}/${item.slug}`}
+              className={cx('nav-dropdown__link')}
               onClick={() => setIsOpen(false)}
             >
               {toTitleCase(item.name)}

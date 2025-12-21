@@ -1,6 +1,6 @@
 @use '@/assets/styles/abstracts' as *;
 
-.dropdown {
+.nav-dropdown {
   position: absolute;
   top: 100%;
   left: 0;
@@ -14,10 +14,17 @@
   overflow-y: auto;
   overscroll-behavior: contain;
   color: $layout-foreground;
+
   &::-webkit-scrollbar {
     width: 0;
     height: 0;
   }
+
+  @include breakpoint(xl) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   &--country {
     right: 0;
     left: auto;
@@ -27,11 +34,8 @@
       left: 0;
     }
   }
-  @include breakpoint(xl) {
-    left: 50%;
-    transform: translateX(-50%);
-  }
-  &__list {
+
+  &__menu {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     column-gap: 1.5rem;
@@ -45,18 +49,19 @@
     }
   }
 
-  &__item {
-    a {
-      display: block;
-      border-radius: 0.5rem;
-      padding: 1.2rem 0.8rem;
-      font-weight: 500;
-      font-size: 1.3rem;
-      text-wrap: nowrap;
-      &:hover {
-        background-color: color-opacity(white, 0.04);
-        color: $primary-foreground;
-      }
+  &__link {
+    display: block;
+    border-radius: 0.5rem;
+    padding: 1.2rem 0.8rem;
+    color: inherit;
+    font-weight: 500;
+    font-size: 1.3rem;
+    text-decoration: none;
+    text-wrap: nowrap;
+
+    &:hover {
+      background-color: color-opacity(white, 0.04);
+      color: $primary-foreground;
     }
   }
 }

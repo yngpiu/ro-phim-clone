@@ -1,6 +1,6 @@
 @use '@/assets/styles/abstracts' as *;
 
-.navigation {
+.nav-menu {
   display: flex;
   position: absolute;
   top: 100%;
@@ -26,7 +26,7 @@
     pointer-events: auto;
   }
 
-  @include breakpoint('xl') {
+  @include breakpoint(xl) {
     position: static;
     flex: 1;
     flex-direction: row-reverse;
@@ -36,69 +36,82 @@
     opacity: 1;
     margin-left: auto;
     background-color: transparent;
-    padding: 0;
-    padding-left: 2rem;
+    padding: 0 0 0 2rem;
     max-width: none;
     pointer-events: auto;
   }
 
-  &__user {
-    & a {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.5rem;
-      border-radius: 2rem;
-      background-color: $nav-menu-foreground;
-      padding: 1rem 0;
-      color: black;
-      font-weight: 500;
-      font-size: 1.4rem;
-    }
-
-    @include breakpoint('xl') {
+  &__account {
+    @include breakpoint(xl) {
       width: 13rem;
     }
   }
 
-  &__list {
+  &__account-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 2rem;
+    background-color: $nav-menu-foreground;
+    padding: 1rem 0;
+    color: black;
+    font-weight: 500;
+    font-size: 1.4rem;
+    text-decoration: none;
+  }
+
+  &__items {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     color: $nav-menu-foreground;
     font-weight: 500;
     font-size: 1.4rem;
 
-    @include breakpoint('xl') {
+    @include breakpoint(xl) {
       display: flex;
     }
   }
 
   &__item {
-    & > a,
-    & > span {
-      display: block;
-      transition: color 0.2s linear;
-      padding: 1rem 0;
-
-      &:hover {
-        color: $primary-foreground;
-      }
-
-      @include breakpoint('xl') {
-        padding: 1rem 1.5rem;
-      }
-    }
-    & span {
-      cursor: pointer;
-    }
-
-    &--dropdown {
+    &--has-dropdown {
       position: relative;
       user-select: none;
     }
 
-    &--selected {
+    &--active {
       color: $primary-foreground;
+    }
+  }
+
+  &__link {
+    display: block;
+    transition: color 0.2s linear;
+    padding: 1rem 0;
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary-foreground;
+    }
+
+    @include breakpoint(xl) {
+      padding: 1rem 1.5rem;
+    }
+  }
+
+  &__trigger {
+    display: block;
+    transition: color 0.2s linear;
+    cursor: pointer;
+    padding: 1rem 0;
+
+    &:hover {
+      color: $primary-foreground;
+    }
+
+    @include breakpoint(xl) {
+      padding: 1rem 1.5rem;
     }
   }
 }

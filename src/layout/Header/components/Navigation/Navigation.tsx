@@ -21,86 +21,100 @@ type NavigationProps = {
 
 const Navigation = memo(
   ({ genres, countries, isOpen, setIsOpen }: NavigationProps) => {
-    const [selectedCategory, setSelectedCategory] = useState<
+    const [activeDropdown, setActiveDropdown] = useState<
       'genre' | 'country' | null
     >(null);
+
     const dropdownRef = useOutsideClick<HTMLLIElement>({
-      callback: () => setSelectedCategory(null),
-      isOpen: selectedCategory !== null,
+      callback: () => setActiveDropdown(null),
+      isOpen: activeDropdown !== null,
     });
 
-    const handleSelectCategory = (category: 'genre' | 'country') => {
-      if (selectedCategory === category) {
-        setSelectedCategory(null);
-      } else {
-        setSelectedCategory(category);
-      }
+    const toggleDropdown = (type: 'genre' | 'country') => {
+      setActiveDropdown(prev => (prev === type ? null : type));
     };
 
-    const handleCloseNavMenu = () => {
-      setSelectedCategory(null);
+    const closeMenu = () => {
+      setActiveDropdown(null);
       setIsOpen(false);
     };
 
     return (
-      <nav className={cx('navigation', { 'navigation--open': isOpen })}>
-        <div className={cx('navigation__user')}>
-          <Link to="/login">
+      <nav className={cx('nav-menu', { 'nav-menu--open': isOpen })}>
+        <div className={cx('nav-menu__account')}>
+          <Link to="/login" className={cx('nav-menu__account-link')}>
             <FontAwesomeIcon icon={faUser} />
             Thành viên
           </Link>
         </div>
-        <ul className={cx('navigation__list')}>
-          <li className={cx('navigation__item')}>
-            <Link to="/phim-le" onClick={() => setIsOpen(false)}>
+
+        <ul className={cx('nav-menu__items')}>
+          <li className={cx('nav-menu__item')}>
+            <Link
+              to="/phim-le"
+              className={cx('nav-menu__link')}
+              onClick={closeMenu}
+            >
               Phim Lẻ
             </Link>
           </li>
-          <li className={cx('navigation__item')}>
-            <Link to="/phim-bo" onClick={() => setIsOpen(false)}>
+
+          <li className={cx('nav-menu__item')}>
+            <Link
+              to="/phim-bo"
+              className={cx('nav-menu__link')}
+              onClick={closeMenu}
+            >
               Phim Bộ
             </Link>
           </li>
+
           <li
             className={cx(
-              'navigation__item',
-              'navigation__item--dropdown',
-              selectedCategory === 'genre' && 'navigation__item--selected'
+              'nav-menu__item',
+              'nav-menu__item--has-dropdown',
+              activeDropdown === 'genre' && 'nav-menu__item--active'
             )}
-            ref={selectedCategory === 'genre' ? dropdownRef : undefined}
+            ref={activeDropdown === 'genre' ? dropdownRef : undefined}
           >
-            <span onClick={() => handleSelectCategory('genre')}>
+            <span
+              className={cx('nav-menu__trigger')}
+              onClick={() => toggleDropdown('genre')}
+            >
               Thể Loại <FontAwesomeIcon icon={faCaretDown} />
             </span>
-            {selectedCategory === 'genre' && (
-              <Dropdown
-                data={genres}
-                type="genre"
-                setIsOpen={handleCloseNavMenu}
-              />
+
+            {activeDropdown === 'genre' && (
+              <Dropdown data={genres} type="genre" setIsOpen={closeMenu} />
             )}
           </li>
+
           <li
             className={cx(
-              'navigation__item',
-              'navigation__item--dropdown',
-              selectedCategory === 'country' && 'navigation__item--selected'
+              'nav-menu__item',
+              'nav-menu__item--has-dropdown',
+              activeDropdown === 'country' && 'nav-menu__item--active'
             )}
-            ref={selectedCategory === 'country' ? dropdownRef : undefined}
+            ref={activeDropdown === 'country' ? dropdownRef : undefined}
           >
-            <span onClick={() => handleSelectCategory('country')}>
+            <span
+              className={cx('nav-menu__trigger')}
+              onClick={() => toggleDropdown('country')}
+            >
               Quốc Gia <FontAwesomeIcon icon={faCaretDown} />
             </span>
-            {selectedCategory === 'country' && (
-              <Dropdown
-                data={countries}
-                type="country"
-                setIsOpen={handleCloseNavMenu}
-              />
+
+            {activeDropdown === 'country' && (
+              <Dropdown data={countries} type="country" setIsOpen={closeMenu} />
             )}
           </li>
-          <li className={cx('navigation__item')}>
-            <Link to="/chu-de" onClick={() => setIsOpen(false)}>
+
+          <li className={cx('nav-menu__item')}>
+            <Link
+              to="/chu-de"
+              className={cx('nav-menu__link')}
+              onClick={closeMenu}
+            >
               Chủ Đề
             </Link>
           </li>

@@ -11,15 +11,18 @@ type SearchBarToggleProps = {
 
 const SearchBarToggle = ({ isOpen, onToggle }: SearchBarToggleProps) => {
   return (
-    <button
-      className={cx('search-bar__toggle', {
-        'search-bar__toggle--close': isOpen,
-      })}
-      onClick={onToggle}
-      aria-label={isOpen ? 'Close search' : 'Open search'}
-    >
-      <div className={cx('search-bar__icon')} />
-    </button>
+    <div className={cx('search-toggle')}>
+      <button
+        type="button"
+        className={cx('search-toggle__button', {
+          'search-toggle__button--active': isOpen,
+        })}
+        onClick={onToggle}
+        aria-label={isOpen ? 'Close search' : 'Open search'}
+      >
+        <span className={cx('search-toggle__lens')} />
+      </button>
+    </div>
   );
 };
 
