@@ -1,0 +1,218 @@
+@use '@/assets/styles/abstracts' as *;
+
+.nfc {
+  @include breakpoint(xl) {
+    display: flex;
+  }
+
+  &__carousel {
+    position: relative;
+    margin-top: 2rem;
+  }
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+
+    @include breakpoint(xl) {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 2rem;
+      padding-right: 3rem;
+    }
+  }
+
+  &__img-wrap {
+    position: relative;
+    border-radius: 1.2rem;
+    aspect-ratio: 9/16;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__langs {
+    display: flex;
+    position: absolute;
+    bottom: 2%;
+    left: 4%;
+    flex-direction: column;
+    gap: 0.2rem;
+    overflow: hidden;
+
+    @include breakpoint(sm) {
+      bottom: 0;
+      left: 50%;
+      flex-direction: row;
+      gap: 0;
+      transform: translateX(-50%);
+      border-top-right-radius: 0.6rem;
+      border-top-left-radius: 0.6rem;
+    }
+
+    @include breakpoint(md) {
+      left: 6%;
+      transform: translateX(0);
+    }
+
+    & div:nth-child(3) {
+      background-color: #29818d;
+    }
+
+    & div:nth-child(2) {
+      background-color: #2ca35d;
+    }
+
+    & div:nth-child(1) {
+      background-color: #5e6070;
+    }
+  }
+
+  &__lang {
+    border-radius: 0.8rem;
+    padding: 0.2rem 0.5rem;
+    font-weight: 400;
+    font-size: 0.8rem;
+
+    @include breakpoint(sm) {
+      border-radius: 0;
+      padding: 0.4rem 0.6rem;
+      font-size: 1rem;
+    }
+
+    @include breakpoint(md) {
+      font-size: 1.1rem;
+    }
+
+    & span:last-child {
+      font-weight: 600;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    transition: color 0.3s ease;
+    padding: 0.4rem 1rem;
+
+    &:hover {
+      color: $primary-foreground;
+    }
+
+    @include breakpoint(sm) {
+      padding: 0.4rem 0rem;
+    }
+
+    & span {
+      display: none;
+      font-weight: 500;
+      font-size: 1.5rem;
+      line-height: 1;
+
+      @include breakpoint(sm) {
+        display: block;
+      }
+    }
+
+    & svg {
+      font-size: 1.8rem;
+    }
+  }
+
+  &__content {
+    margin-top: 1.6rem;
+    max-width: 100%;
+  }
+
+  &__item-title {
+    padding: 0 1rem;
+    text-align: center;
+    @include text-truncate(1);
+    transition: color 0.3s ease;
+    font-weight: 600;
+    font-size: 1.3rem;
+    &:hover {
+      color: $primary-foreground;
+    }
+
+    @include breakpoint(md) {
+      font-size: 1.5rem;
+    }
+
+    @include breakpoint(lg) {
+      font-size: 1.6rem;
+    }
+  }
+
+  &__orig-name {
+    margin-top: 0.4rem;
+    padding: 0 1rem;
+    color: #aaa;
+    font-size: 1.2rem;
+    text-align: center;
+    @include text-truncate(1);
+
+    @include breakpoint(md) {
+      font-size: 1.3rem;
+    }
+
+    @include breakpoint(lg) {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.nfc {
+  &__nav {
+    display: none;
+    position: absolute;
+    top: 35%;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-50%);
+    z-index: 10;
+    transition: opacity 0.3s ease;
+    border-radius: 50%;
+    width: 4rem;
+    height: 4rem;
+
+    &:hover {
+      & svg {
+        color: #fff;
+      }
+    }
+
+    @include breakpoint(xl) {
+      display: flex;
+    }
+
+    &--disabled {
+      opacity: 0;
+    }
+
+    & svg {
+      transition: color 0.3s ease;
+      color: #5a5858;
+      font-weight: 500;
+      font-size: 4rem;
+    }
+
+    &-prev {
+      left: 0;
+      transform: translateX(-100%);
+    }
+
+    &-next {
+      right: 0;
+      transform: translateX(100%);
+    }
+  }
+}

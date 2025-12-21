@@ -8,6 +8,10 @@
     padding: 0 2rem;
   }
 
+  @include breakpoint(xl) {
+    padding: 0 4rem;
+  }
+
   &__list {
     display: flex;
     flex-wrap: nowrap;
