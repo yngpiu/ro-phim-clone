@@ -31,6 +31,10 @@
   &__slide {
     position: relative;
     height: 100%;
+
+    &:not(:global(.swiper-slide-active)) {
+      pointer-events: none;
+    }
   }
 
   &__media {

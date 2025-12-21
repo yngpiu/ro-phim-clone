@@ -121,11 +121,23 @@
       @include breakpoint(md) {
         display: flex;
       }
+    }
+  }
 
-      & .slider__badge {
-        border-color: transparent;
-        background-color: color-opacity(#fff, 0.1);
-      }
+  &__genre-link {
+    display: flex;
+    transition: all 0.2s ease;
+    text-decoration: none;
+
+    & .slider__badge {
+      transition: all 0.2s ease;
+      border-color: transparent;
+      background-color: color-opacity(#fff, 0.1);
+    }
+
+    &:hover .slider__badge {
+      background-color: color-opacity(#fff, 0.15);
+      color: $primary-foreground;
     }
   }
   &__badge {

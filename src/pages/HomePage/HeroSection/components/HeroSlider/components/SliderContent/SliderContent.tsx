@@ -47,9 +47,15 @@ const SliderContent = ({ film }: SliderContentProps) => {
       </div>
       <div className={cx('slider__badges', 'slider__badges--genres')}>
         {film.category.map(genre => (
-          <Badge key={genre.id} className={cx('slider__badge')}>
-            {toSentenceCase(genre.name)}
-          </Badge>
+          <Link
+            key={genre.id}
+            to={{ pathname: `/the-loai/${genre.slug}` }}
+            className={cx('slider__genre-link')}
+          >
+            <Badge className={cx('slider__badge')}>
+              {toSentenceCase(genre.name)}
+            </Badge>
+          </Link>
         ))}
       </div>
     </div>
