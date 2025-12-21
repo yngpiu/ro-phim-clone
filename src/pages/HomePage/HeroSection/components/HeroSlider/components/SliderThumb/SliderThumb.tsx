@@ -29,6 +29,7 @@ const SliderThumb = ({ films, onSwiper }: SliderThumbProps) => {
         <SwiperSlide key={film._id} className={cx('slider__thumb')}>
           <div className={cx('slider__thumb-media')}>
             <img
+              loading="lazy"
               className={cx('slider__thumb-img')}
               src={`${BASE_IMAGE_URL}/uploads/movies/${film.poster_url}`}
               alt={film.name}
@@ -41,4 +42,3 @@ const SliderThumb = ({ films, onSwiper }: SliderThumbProps) => {
 };
 
 export default SliderThumb;
-

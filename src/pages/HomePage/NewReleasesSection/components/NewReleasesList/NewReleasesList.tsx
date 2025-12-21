@@ -116,6 +116,7 @@ const NewReleasesList = memo(
                   <Link to={`/phim/${film.slug}`} className={cx('newrl__item')}>
                     <div className={cx('newrl__img-wrap')}>
                       <img
+                        loading="lazy"
                         className={cx('newrl__img')}
                         src={`${BASE_IMAGE_URL}/uploads/movies/${film.poster_url}`}
                         alt={film.name}

@@ -97,6 +97,7 @@ const NewFilmsCarousel = ({ films }: NewFilmsCarouselProps) => {
               <Link to={`/phim/${film.slug}`} className={cx('nfc__item')}>
                 <div className={cx('nfc__img-wrap')}>
                   <img
+                    loading="lazy"
                     className={cx('nfc__img')}
                     src={`${BASE_IMAGE_URL}/uploads/movies/${film.thumb_url}`}
                     alt={film.name}

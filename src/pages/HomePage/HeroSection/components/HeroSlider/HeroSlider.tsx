@@ -41,6 +41,7 @@ const HeroSlider = ({ films }: HeroSliderProps) => {
           <SwiperSlide key={film._id} className={cx('slider__slide')}>
             <div className={cx('slider__media')}>
               <img
+                loading="lazy"
                 className={cx('slider__img')}
                 src={`${BASE_IMAGE_URL}/uploads/movies/${film.poster_url}`}
                 alt={film.name}

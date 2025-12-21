@@ -97,6 +97,7 @@ const NewCinemaFilmsCarousel = ({ films }: NewCinemaFilmsCarouselProps) => {
               <Link to={`/phim/${film.slug}`} className={cx('ncfc__item')}>
                 <div className={cx('ncfc__img-wrap')}>
                   <img
+                    loading="lazy"
                     className={cx('ncfc__img')}
                     src={`${BASE_IMAGE_URL}/uploads/movies/${film.poster_url}`}
                     alt={film.name}
@@ -117,6 +118,7 @@ const NewCinemaFilmsCarousel = ({ films }: NewCinemaFilmsCarouselProps) => {
                 <div className={cx('ncfc__content')}>
                   <div className={cx('ncfc__item-thumb')}>
                     <img
+                      loading="lazy"
                       src={`${BASE_IMAGE_URL}/uploads/movies/${film.thumb_url}`}
                       alt={film.name}
                     />
