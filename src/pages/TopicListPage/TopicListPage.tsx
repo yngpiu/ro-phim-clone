@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 
+import TopicCard from '@/components/TopicCard/TopicCard';
 import { filmTopics } from '@/constants/topics';
-import TopicCard from '@/pages/HomePage/TopicSection/components/TopicCard/TopicCard';
 
 import styles from './TopicListPage.module.scss';
 
