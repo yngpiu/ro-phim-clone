@@ -9,13 +9,18 @@ type TopicCardProps = {
   name: string;
   colorHex: string;
   slug: string;
+  className?: string;
 };
 const cx = classNames.bind(styles);
-const TopicCard = ({ name, colorHex, slug }: TopicCardProps) => {
+const TopicCard = ({ name, colorHex, slug, className }: TopicCardProps) => {
   return (
     <Link
       to={{ pathname: slug }}
-      className={cx('topic-card', { 'topic-card--more': slug === '/chu-de' })}
+      className={cx(
+        'topic-card',
+        { 'topic-card--more': slug === '/chu-de' },
+        className
+      )}
       style={{ backgroundColor: colorHex }}
     >
       <div className={cx('topic-card__content')}>

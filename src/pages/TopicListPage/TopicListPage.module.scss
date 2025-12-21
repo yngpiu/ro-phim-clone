@@ -1,0 +1,63 @@
+@use '@/assets/styles/abstracts' as *;
+
+.tlp {
+  padding: 0 1rem;
+
+  @include breakpoint(md) {
+    padding: 0 2rem;
+  }
+
+  @include breakpoint(xl) {
+    padding: 9rem 4rem;
+  }
+
+  &__title {
+    margin-top: 4rem;
+    font-weight: 600;
+    font-size: 2.2rem;
+
+    @include breakpoint(md) {
+      margin-top: 4rem;
+      margin-bottom: 2rem;
+      font-size: 2.4rem;
+    }
+
+    @include breakpoint(xl) {
+      margin-top: 7rem;
+      margin-bottom: 3rem;
+      font-size: 2.8rem;
+    }
+  }
+}
+
+.topic {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.6rem;
+
+    @include breakpoint(sm) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.8rem;
+    }
+    @include breakpoint(md) {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+    }
+
+    @include breakpoint(lg) {
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2.2rem;
+    }
+
+    @include breakpoint(xl) {
+      grid-template-columns: repeat(6, 1fr);
+      gap: 2.4rem;
+    }
+  }
+
+  &__item {
+    width: auto;
+  }
+}
