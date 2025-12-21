@@ -3,20 +3,20 @@
   justify-content: center;
   align-items: center;
   padding: 4rem 0;
-}
 
-.loader__spinner {
-  aspect-ratio: 1;
-  width: 45px;
-  --c: no-repeat linear-gradient(#5b5d68 0 0);
-  transform: scale(0.9);
-  animation: l1 1s linear infinite;
-  border-radius: 50%;
-  background:
-    var(--c) 0 50%,
-    var(--c) 50% 50%,
-    var(--c) 100% 50%;
-  background-size: 20% 100%;
+  &__spinner {
+    aspect-ratio: 1;
+    width: 45px;
+    --c: no-repeat linear-gradient(#5b5d68 0 0);
+    transform: scale(0.9);
+    animation: l1 1s linear infinite;
+    border-radius: 50%;
+    background:
+      var(--c) 0 50%,
+      var(--c) 50% 50%,
+      var(--c) 100% 50%;
+    background-size: 20% 100%;
+  }
 }
 
 @keyframes l1 {

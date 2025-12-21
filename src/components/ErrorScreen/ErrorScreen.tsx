@@ -4,23 +4,28 @@ import styles from './ErrorScreen.module.scss';
 
 const cx = classNames.bind(styles);
 
-const ErrorScreen = () => {
+const ErrorScreen = ({
+  title = 'Đã xảy ra lỗi',
+  description = 'Đã xảy ra lỗi khi tải trang này. Vui lòng thử lại sau.',
+  image = '/images/404.svg',
+}) => {
   return (
     <div className={cx('error-screen')}>
       <div className={cx('error-screen__container')}>
         <img
-          src="/images/404.svg"
-          alt="logo"
-          className={cx('error-screen__logo')}
+          src={image}
+          alt="error illustration"
+          className={cx('error-screen__illustration')}
         />
+
         <div className={cx('error-screen__content')}>
-          <h1 className={cx('error-screen__title')}>Đã xảy ra lỗi</h1>
-          <p className={cx('error-screen__description')}>
-            Đã xảy ra lỗi khi tải trang này. Vui lòng thử lại sau.
-          </p>
+          <h1 className={cx('error-screen__title')}>{title}</h1>
+
+          <p className={cx('error-screen__description')}>{description}</p>
         </div>
       </div>
     </div>
   );
 };
+
 export default ErrorScreen;

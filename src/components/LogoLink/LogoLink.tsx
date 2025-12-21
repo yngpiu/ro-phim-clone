@@ -13,8 +13,9 @@ type LogoLinkProps = {
 const LogoLink = ({ className, onCloseNavMenu }: LogoLinkProps) => {
   return (
     <Link to="/" className={cx('logo', className)} onClick={onCloseNavMenu}>
-      <img src="/images/logo.svg" alt="Logo" />
+      <img src="/images/logo.svg" alt="Logo" className={cx('logo__image')} />
     </Link>
   );
 };
+
 export default LogoLink;

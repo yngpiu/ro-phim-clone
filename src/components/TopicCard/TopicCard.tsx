@@ -11,21 +11,22 @@ type TopicCardProps = {
   slug: string;
   className?: string;
 };
+
 const cx = classNames.bind(styles);
+
 const TopicCard = ({ name, colorHex, slug, className }: TopicCardProps) => {
+  const isMore = slug === '/chu-de';
+
   return (
     <Link
       to={{ pathname: slug }}
-      className={cx(
-        'topic-card',
-        { 'topic-card--more': slug === '/chu-de' },
-        className
-      )}
+      className={cx('topic-card', { 'topic-card--more': isMore }, className)}
       style={{ backgroundColor: colorHex }}
     >
       <div className={cx('topic-card__content')}>
         <div className={cx('topic-card__name')}>{name}</div>
-        {slug !== '/chu-de' && (
+
+        {!isMore && (
           <div className={cx('topic-card__view-more')}>
             Xem chủ đề <FontAwesomeIcon icon={faChevronRight} />
           </div>
@@ -34,4 +35,5 @@ const TopicCard = ({ name, colorHex, slug, className }: TopicCardProps) => {
     </Link>
   );
 };
+
 export default TopicCard;

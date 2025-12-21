@@ -1,4 +1,5 @@
 @use '@/assets/styles/abstracts' as *;
+
 .topic-card {
   display: flex;
   position: relative;
@@ -26,15 +27,13 @@
   }
 
   &--more {
-    & .topic-card__content {
-      align-items: center;
-    }
     @include breakpoint(xl) {
       min-height: 8rem;
     }
 
     & .topic-card__content {
       justify-content: center;
+      align-items: center;
     }
   }
 
@@ -47,6 +46,30 @@
 
     @include breakpoint(md) {
       justify-content: space-between;
+    }
+  }
+
+  &__name {
+    font-weight: 700;
+    font-size: 1.4rem;
+
+    @include breakpoint(sm) {
+      font-size: 1.7rem;
+    }
+
+    @include breakpoint(xl) {
+      font-size: 2rem;
+    }
+  }
+
+  &__view-more {
+    display: none;
+
+    @include breakpoint(md) {
+      display: block;
+      margin-top: 1.6rem;
+      font-weight: 500;
+      font-size: 1.4rem;
     }
   }
 
@@ -81,29 +104,5 @@
     background-size: 200px 140px;
     background-repeat: no-repeat;
     content: '';
-  }
-
-  &__name {
-    font-weight: 700;
-    font-size: 1.4rem;
-
-    @include breakpoint(sm) {
-      font-size: 1.7rem;
-    }
-
-    @include breakpoint(xl) {
-      font-size: 2rem;
-    }
-  }
-
-  &__view-more {
-    display: none;
-
-    @include breakpoint(md) {
-      display: block;
-      margin-top: 1.6rem;
-      font-weight: 500;
-      font-size: 1.4rem;
-    }
   }
 }

@@ -5,6 +5,7 @@
   justify-content: center;
   align-items: center;
   height: 100vh;
+
   &__container {
     display: flex;
     flex-direction: column;
@@ -13,7 +14,15 @@
     width: 100%;
   }
 
-  &__logo {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__illustration {
     width: 70%;
     max-width: 40rem;
     height: auto;
@@ -43,14 +52,6 @@
     @include breakpoint(xxl) {
       font-size: 3.5rem;
     }
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
   }
 
   &__description {
