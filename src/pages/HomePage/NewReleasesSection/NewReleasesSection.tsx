@@ -10,35 +10,42 @@ import styles from './NewReleasesSection.module.scss';
 const cx = classNames.bind(styles);
 
 const NewReleasesSection = () => {
-  const { data: newReleasesKoreanData, isLoading: isLoadingNewReleasesKorean } =
-    useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
-      config: {
-        params: {
-          page: 1,
-          limit: 20,
-          country: 'han-quoc',
-          sort_field: 'modified.time',
-          sort_type: 'desc',
-        },
+  const {
+    data: newReleasesKoreanData,
+    isLoading: isLoadingNewReleasesKorean,
+    error: errorNewReleasesKorean,
+  } = useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
+    config: {
+      params: {
+        page: 1,
+        limit: 20,
+        country: 'han-quoc',
+        sort_field: 'modified.time',
+        sort_type: 'desc',
       },
-      cache: { ttl: 5 * 60 * 1000 },
-    });
-  const { data: newReleasesChinaData, isLoading: isLoadingNewReleasesChina } =
-    useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
-      config: {
-        params: {
-          page: 1,
-          limit: 20,
-          country: 'trung-quoc',
-          sort_field: 'modified.time',
-          sort_type: 'desc',
-        },
+    },
+    cache: { ttl: 5 * 60 * 1000 },
+  });
+  const {
+    data: newReleasesChinaData,
+    isLoading: isLoadingNewReleasesChina,
+    error: errorNewReleasesChina,
+  } = useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
+    config: {
+      params: {
+        page: 1,
+        limit: 20,
+        country: 'trung-quoc',
+        sort_field: 'modified.time',
+        sort_type: 'desc',
       },
-      cache: { ttl: 5 * 60 * 1000 },
-    });
+    },
+    cache: { ttl: 5 * 60 * 1000 },
+  });
   const {
     data: newReleasesVietnamData,
     isLoading: isLoadingNewReleasesVietnam,
+    error: errorNewReleasesVietnam,
   } = useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
     config: {
       params: {
@@ -58,6 +65,14 @@ const NewReleasesSection = () => {
     isLoadingNewReleasesVietnam
   ) {
     return <Loader />;
+  }
+
+  if (
+    errorNewReleasesKorean ||
+    errorNewReleasesChina ||
+    errorNewReleasesVietnam
+  ) {
+    return null;
   }
   return (
     <section className={cx('new-releases-section')}>

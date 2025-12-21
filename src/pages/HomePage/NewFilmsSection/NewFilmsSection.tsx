@@ -13,19 +13,25 @@ import styles from './NewFilmsSection.module.scss';
 const cx = classNames.bind(styles);
 
 const NewFilmsSection = () => {
-  const { data: newFilms, isLoading: isLoadingNewFilms } =
-    useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
-      config: {
-        params: {
-          page: 1,
-          limit: 20,
-        },
+  const {
+    data: newFilms,
+    isLoading: isLoadingNewFilms,
+    error: errorNewFilms,
+  } = useQuery<FilmListAPIResponse>('danh-sach/phim-moi', {
+    config: {
+      params: {
+        page: 1,
+        limit: 20,
       },
-      cache: { ttl: 5 * 60 * 1000 },
-    });
+    },
+    cache: { ttl: 5 * 60 * 1000 },
+  });
 
   if (isLoadingNewFilms) {
     return <Loader />;
+  }
+  if (errorNewFilms) {
+    return null;
   }
   return (
     <section className={cx('nfs')}>

@@ -13,21 +13,27 @@ import styles from './NewCinemaFilmsSection.module.scss';
 const cx = classNames.bind(styles);
 
 const NewCinemaFilmsSection = () => {
-  const { data: newCinemaFilms, isLoading: isLoadingNewCinemaFilms } =
-    useQuery<FilmListAPIResponse>('danh-sach/phim-chieu-rap', {
-      config: {
-        params: {
-          page: 1,
-          limit: 20,
-          sort_field: 'modified.time',
-          sort_type: 'desc',
-        },
+  const {
+    data: newCinemaFilms,
+    isLoading: isLoadingNewCinemaFilms,
+    error: errorNewCinemaFilms,
+  } = useQuery<FilmListAPIResponse>('danh-sach/phim-chieu-rap', {
+    config: {
+      params: {
+        page: 1,
+        limit: 20,
+        sort_field: 'modified.time',
+        sort_type: 'desc',
       },
-      cache: { ttl: 5 * 60 * 1000 },
-    });
+    },
+    cache: { ttl: 5 * 60 * 1000 },
+  });
 
   if (isLoadingNewCinemaFilms) {
     return <Loader />;
+  }
+  if (errorNewCinemaFilms) {
+    return null;
   }
   return (
     <section className={cx('ncfs')}>

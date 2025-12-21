@@ -1,6 +1,7 @@
 @use '@/assets/styles/abstracts' as *;
 
 .nfs {
+  margin-top: 2rem;
   padding: 0 1rem;
   @include breakpoint(md) {
     padding: 0 2rem;
