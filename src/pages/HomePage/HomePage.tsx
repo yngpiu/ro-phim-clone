@@ -1,6 +1,7 @@
 import { useLoaderData } from 'react-router-dom';
 
 import HeroSection from '@/pages/HomePage/HeroSection/HeroSection';
+import NewCinemaFilmsSection from '@/pages/HomePage/NewCinemaFilmsSection/NewCinemaFilmsSection';
 import NewFilmsSection from '@/pages/HomePage/NewFilmsSection/NewFilmsSection';
 import NewReleasesSection from '@/pages/HomePage/NewReleasesSection/NewReleasesSection';
 import TopicSection from '@/pages/HomePage/TopicSection/TopicSection';
@@ -14,6 +15,7 @@ const HomePage = () => {
       <TopicSection />
       <NewReleasesSection />
       <NewFilmsSection />
+      <NewCinemaFilmsSection />
     </div>
   );
 };
