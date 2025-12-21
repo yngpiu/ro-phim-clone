@@ -30,6 +30,12 @@ const SliderContent = ({ film }: SliderContentProps) => {
         <Badge className={cx('slider__badge', 'slider__badge--quality')}>
           <span>{film.quality}</span>
         </Badge>
+
+        {film?.country[0]?.name && (
+          <Badge className={cx('slider__badge')}>
+            <span>{film?.country[0]?.name}</span>
+          </Badge>
+        )}
         <Badge className={cx('slider__badge')}>
           <span>{film.year}</span>
         </Badge>

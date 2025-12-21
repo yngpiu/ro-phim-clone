@@ -27,10 +27,12 @@ const router = createBrowserRouter([
         loader: async () => {
           const response = await axiosClient.get<
             OphimApiResponse<FilmListAPIResponse>
-          >('danh-sach/phim-chieu-rap', {
+          >('danh-sach/subteam', {
             params: {
               page: 1,
               limit: 5,
+              sort_field: 'modified.time',
+              sort_type: 'desc',
             },
             cache: { ttl: 5 * 60 * 1000 },
           } as CacheRequestConfig);

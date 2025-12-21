@@ -68,7 +68,7 @@ export type Country = {
   slug: string;
 };
 
-export type LastEpisode = {
+export type LastEpisodes = {
   server_name: string;
   is_ai: boolean;
   name: string;
@@ -114,7 +114,7 @@ export type Film = {
   country: Country[];
   alternative_names: string[];
   lang_key: string[];
-  last_episode: LastEpisode[];
+  last_episodes: LastEpisodes[];
 };
 
 export type FilmListAPIResponse = {

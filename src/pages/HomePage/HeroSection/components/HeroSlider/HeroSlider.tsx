@@ -22,7 +22,7 @@ interface HeroSliderProps {
 const HeroSlider = ({ films }: HeroSliderProps) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperType | null>(null);
   const [selectFilmIndex, setSelectFilmIndex] = useState(0);
-
+  console.log(films);
   return (
     <div className={cx('slider')}>
       {/* Main Swiper */}
