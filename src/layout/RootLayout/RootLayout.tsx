@@ -12,11 +12,13 @@ const cx = classNames.bind(styles);
 const RootLayout = () => {
   return (
     <ScrollProvider>
-      <Header />
-      <main className={cx('main')}>
-        <Outlet />
-      </main>
-      <Footer />
+      <div className={cx('root-layout')}>
+        <Header />
+        <main className={cx('main')}>
+          <Outlet />
+        </main>
+        <Footer />
+      </div>
     </ScrollProvider>
   );
 };

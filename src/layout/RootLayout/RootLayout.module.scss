@@ -1,9 +1,16 @@
 @use '@/assets/styles/abstracts' as *;
 
 .main {
+  flex-grow: 1;
   padding-top: 6rem;
 
   @include breakpoint('xl') {
     padding-top: 0rem;
   }
+}
+
+.root-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }

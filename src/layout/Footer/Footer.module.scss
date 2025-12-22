@@ -1,0 +1,156 @@
+@use '@/assets/styles/abstracts' as *;
+
+.footer {
+  margin-top: 3rem;
+  background-color: $layout-background;
+
+  color: $layout-foreground;
+
+  @include breakpoint(lg) {
+    margin-top: 5rem;
+  }
+
+  &__overlay {
+    padding: 3.2rem 1rem;
+    @include breakpoint(lg) {
+      background-image: url('/images/footer-icon.svg');
+      background-position: 100%;
+      background-repeat: no-repeat;
+    }
+
+    @include breakpoint(md) {
+      padding: 4rem 2rem;
+    }
+  }
+
+  &__container {
+    display: flex;
+    row-gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+
+    @include breakpoint(md) {
+      row-gap: 3rem;
+    }
+
+    @include breakpoint(lg) {
+      align-items: flex-start;
+      max-width: 80rem;
+    }
+  }
+
+  &__logo {
+    display: block;
+    height: 6rem;
+
+    @include breakpoint(lg) {
+      padding-right: 4rem;
+    }
+
+    & img {
+      height: 100%;
+    }
+  }
+
+  &__top {
+    display: flex;
+    row-gap: 2rem;
+    flex-direction: column;
+    align-items: center;
+
+    @include breakpoint(md) {
+      row-gap: 3rem;
+    }
+
+    @include breakpoint(lg) {
+      flex-direction: row;
+    }
+  }
+
+  &__description {
+    color: #aaa;
+    font-size: 1.2rem;
+    text-align: center;
+
+    @include breakpoint(sm) {
+      font-size: 1.4rem;
+    }
+
+    @include breakpoint(lg) {
+      text-align: left;
+    }
+  }
+  &__copyright {
+    color: #aaa;
+    font-size: 1.2rem;
+    text-align: center;
+
+    @include breakpoint(sm) {
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.social {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    @include breakpoint(lg) {
+      gap: 1.4rem;
+      border-left: 1px solid #fff1;
+      padding-left: 4rem;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    background-color: #fff1;
+    width: 4rem;
+    height: 4rem;
+
+    &:hover {
+      .social__icon {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__icon {
+    transition: transform 0.3s ease;
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+}
+
+.legal {
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1.4rem;
+    font-size: 1.2rem;
+
+    @include breakpoint(sm) {
+      font-size: 1.4rem;
+    }
+
+    @include breakpoint(lg) {
+      gap: 2rem;
+    }
+  }
+
+  &__link {
+    transition: color 0.3s ease;
+    &:hover {
+      color: $primary-foreground;
+    }
+  }
+}
