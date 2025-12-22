@@ -23,6 +23,7 @@ const Footer = () => {
                   <Link
                     key={social.id}
                     to={social.url}
+                    target="_blank"
                     className={cx('social__link')}
                   >
                     <img
@@ -40,7 +41,11 @@ const Footer = () => {
               {FOOTER_LEGAL_LIST.map(legal => {
                 return (
                   <li className={cx('legal__item')} key={legal.url}>
-                    <Link to={legal.url} className={cx('legal__link')}>
+                    <Link
+                      to={legal.url}
+                      target="_blank"
+                      className={cx('legal__link')}
+                    >
                       {legal.name}
                     </Link>
                   </li>
